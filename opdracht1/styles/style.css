@@ -88,6 +88,20 @@ section#marvel h2 span{
 section#marvel h2 span:nth-of-type(1){
 	animation: ironman 4s forwards ease-in;
 }
+
+/* Captain America */
+section#marvel h2 span:nth-of-type(2){
+	color: var(--marvel-red);
+	/* transform: translateX(100vw); */
+	/* animation-delay: 2s; */
+}
+
+section#marvel h2 span:nth-of-type(2)::before{
+	content: "A";
+	position: absolute;
+	animation: cap 2.5s forwards ease-in-out;
+	color: var(--marvel-white);
+}
 @keyframes ironman {
 	0%{
 		transform: translateY(-100vh);
@@ -120,5 +134,43 @@ section#marvel h2 span:nth-of-type(1){
 	}
 	100%{
 		filter: none;
+	}
+}
+
+@keyframes cap {
+	0%{
+		transform: translateX(100vw) scale(.5) rotate(-90deg);
+		filter: drop-shadow(0px 0px 2px black);
+		background: -webkit-linear-gradient(var(--cap-red) 30%, var(--cap-blue), var(--marvel-white) 60%);
+		-webkit-background-clip: text;
+		-webkit-text-fill-color: #0000;
+		font-weight: 700;
+	}
+	25%{
+		transform: translateX(-100vw) rotate(-90deg);
+	}
+	26%{
+		transform: translateX(-100vw) rotate(45deg);
+	}
+	50%{
+		/* transform: translateX(0) translateY(-100vh) rotate(360deg); */
+		transform: translateX(0) translateY(-100vh) rotate(45deg);
+	}
+	75%{
+		transform: translateX(0) translateY(100vh) rotate(-720deg);
+	}
+	90%{
+		filter: drop-shadow(0px 0px 2px black);
+		background: -webkit-linear-gradient(var(--cap-red) 30%, var(--cap-blue), var(--marvel-white) 60%);
+		-webkit-background-clip: text;
+		-webkit-text-fill-color: #0000;
+		transform: translateX(0) translateY(-20vh) rotate(0) scale(1);
+	}
+	100%{
+		filter: none;
+		background: white;
+		-webkit-background-clip: text;
+		-webkit-text-fill-color: #0000;
+		transform: translateX(0) translateY(0) rotate(0) scale(1);
 	}
 }
