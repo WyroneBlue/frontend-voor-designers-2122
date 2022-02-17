@@ -107,6 +107,12 @@ section#marvel h2 span:nth-of-type(2)::before{
 section#marvel h2 span:nth-of-type(3){
 	animation: thor 3s forwards;
 }
+
+/* Hulk */
+section#marvel h2 span:nth-of-type(4){
+	animation: hulk 3s forwards ease-in;
+	/* transition: font-weight .2s; */
+}
 @keyframes ironman {
 	0%{
 		transform: translateY(-100vh);
@@ -206,5 +212,69 @@ section#marvel h2 span:nth-of-type(3){
 	100%{
 		color: var(--marvel-white);
 		filter: none;
+	}
+}
+
+@keyframes hulk {
+	0%{
+		transform: translateY(-100vh);
+		font-weight: 100;
+		color: marvel-white;
+	}
+
+	28%{
+		transform: scale(1, 0.8) translateY(18px);	
+	}
+	
+	30%{
+		transform: translate(-5px);	
+	}
+	
+	32%{
+		transform: translate(5px);	
+	}
+
+	38%{
+		transform: scale(1) translateY(0vh);	
+	}
+
+	45%{
+		font-weight: 500;
+		transform: scale(1.2);
+	}
+
+	55%{
+		transform: scale(1.5);
+		background: -webkit-linear-gradient(#fff, #fff);
+		-webkit-background-clip: text;
+		-webkit-text-fill-color: #0000;
+	}
+
+	80%{
+		transform: scale(2);
+		background: -webkit-linear-gradient(#A2CD48 51%, #875094 63%);
+		-webkit-background-clip: text;
+		-webkit-text-fill-color: #0000;
+		font-weight: 700;
+	}
+
+	85%{
+		transform: scale(1);
+		background: -webkit-linear-gradient(#fff, #fff);
+		-webkit-background-clip: text;
+	}
+
+	87%{
+		transform: translate(-5px);	
+	}
+	
+	89%{
+		transform: translate(5px);	
+	}
+	
+	100%{
+		background: none;
+		color: marvel-white;
+		font-weight: 100;
 	}
 }
