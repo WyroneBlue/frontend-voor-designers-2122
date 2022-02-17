@@ -60,4 +60,27 @@ body {
 }
 
 /* jouw code */
+section#marvel{
+	display: flex;
+	justify-content:center;
+	align-items:center;
+	height: 600px;
+	background-color:var(--marvel-red);
+	overflow: hidden;
+}
+
+/* Algemene H2 styling */
+section#marvel h2{
+	display: flex;
+	align-items: center;
+	letter-spacing: -5px;
+	transform: scale(.5);
+}
+
+section#marvel h2 span{
+	font-family:Marvel, sans-serif;
+	color:var(--marvel-white);
+	font-size: 10em;
+	font-weight:100;
+}
 
