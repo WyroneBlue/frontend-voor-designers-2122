@@ -32,9 +32,6 @@ button, summary {
 }
 
 
-
-
-
 /*********************/
 /* CUSTOM PROPERTIES */
 /*********************/
@@ -42,10 +39,15 @@ button, summary {
 	/* startje */
 	--color-main:#111;
 	--color-background:#eee;
+	--marvel-red: #F0131E;
+	--marvel-white: #ffffff;
+
+	--ironman-arc: #33C3F7;
+	--cap-blue: #162CA2;
+	--cap-red: #C31D10;
+	--thor-thunder: gold;
+	--hawkeye-arrow: purple;
 }
-
-
-
 
 
 /****************/
