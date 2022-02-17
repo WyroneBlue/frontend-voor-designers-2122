@@ -29,6 +29,9 @@ Nb. Door *open* toe te voegen aan een *details* element kun je deze standaard op
   ### Je storyboard:
   <img src="readme-images/storyboard.jpg" width="375px" alt="storyboard voor opdracht 1">
 
+  ### Storyboard aanpassing:
+  In plaats van dat de "A", captain america, in een capsule gaat, bouncet hij langs de "muren" net zoals zijn schild dat hij gebruikt. Deze keuze heb ik gemaakt omdat de 1e versie van zijn animation meer zijn geschiedenis was ipv zijn karaktereigenschap, net zoals bij de rest van de letters.
+
 
   ### Je ambitie: 
   Aan deze technieken/punten wil ik werken:
