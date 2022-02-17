@@ -113,6 +113,11 @@ section#marvel h2 span:nth-of-type(4){
 	animation: hulk 3s forwards ease-in;
 	/* transition: font-weight .2s; */
 }
+
+/* Black Widow */
+section#marvel h2 span:nth-of-type(5){
+	animation: widow 3s forwards;
+}
 @keyframes ironman {
 	0%{
 		transform: translateY(-100vh);
@@ -278,3 +283,77 @@ section#marvel h2 span:nth-of-type(4){
 		font-weight: 100;
 	}
 }
+
+@keyframes widow {
+	0%{
+		color: var(--color-main);
+		transform: translateY(-100vh) translateX(-100vw);
+	}
+	
+	2%{
+		transform: translateY(-20vh) translateX(-59vw) rotate(15deg);
+	}
+	
+	5%{
+		transform: translateY(-23vh) translateX(-57vw) rotate(30deg);
+	}
+
+	10%{
+		transform: translateY(-15vh) translateX(-50vw) rotate(75deg);
+	}
+
+	15%{
+		transform: translateY(15vh) translateX(-50vw) rotate(161deg);
+	}
+
+	17%{
+		transform: translateY(18vh) translateX(-40vw) rotate(230deg);
+	}
+
+	19%{
+		transform: translateY(18vh) translateX(-30vw) rotate(280deg);
+	}
+
+	22%{
+		transform: translateY(18vh) translateX(-20vw) rotate(330deg);
+	}
+
+	25%{
+		transform: translateY(18vh) translateX(-10vw) rotate(360deg);
+	}
+
+	40%{
+		transform: translateY(16vh) translateX(0vw) rotate(370deg);
+	}
+
+	40%{
+		transform: translateY(16vh) translateX(0vw) rotate(390deg) scale(1, .7);
+	}
+	
+	50%{
+		transform: translateY(10vh) translateX(10vw) rotate(400deg) scale(1);
+	}
+	
+	60%{
+		transform: translateY(5vh) translateX(30vw) rotate(420deg);
+	}
+	
+	70%{
+		transform: translateY(-30vh) translateX(25vw) rotate(410deg);
+	}
+
+	80%{
+		transform: translateY(-20vh) translateX(15vw) rotate(50deg);
+	}
+
+	90%{
+		color: var(--color-main);
+		transform: translateX(5vw) rotate(20deg);
+	}
+
+	100%{
+		color: var(--marvel-white);
+		transform: translateY(0) translateX(0) rotate(0);
+	}
+}
+
