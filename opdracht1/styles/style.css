@@ -102,6 +102,11 @@ section#marvel h2 span:nth-of-type(2)::before{
 	animation: cap 2.5s forwards ease-in-out;
 	color: var(--marvel-white);
 }
+
+/* Thor */
+section#marvel h2 span:nth-of-type(3){
+	animation: thor 3s forwards;
+}
 @keyframes ironman {
 	0%{
 		transform: translateY(-100vh);
@@ -172,5 +177,34 @@ section#marvel h2 span:nth-of-type(2)::before{
 		-webkit-background-clip: text;
 		-webkit-text-fill-color: #0000;
 		transform: translateX(0) translateY(0) rotate(0) scale(1);
+	}
+}
+
+@keyframes thor {
+	0%{
+		transform: translateY(-100vh) translateX(-100vw) scaleY(.5);
+	}
+	35%{
+		transform: translateY(-50vh) translateX(-30vw) scale(.6);
+	}
+	80%{
+		color: var(--marvel-white);
+		transform: translateY(0) translateX(0) scale(1);	
+	}
+	85%{
+		color: var(--thor-thunder);
+		filter: drop-shadow(0 0 5px var(--marvel-white)) brightness(1);
+	}
+	90%{
+		color: var(--marvel-white);
+		filter: none;
+	}
+	95%{
+		color: var(--thor-thunder);
+		filter: drop-shadow(0 0 5px var(--marvel-white)) brightness(1);
+	}
+	100%{
+		color: var(--marvel-white);
+		filter: none;
 	}
 }
