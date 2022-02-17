@@ -84,3 +84,41 @@ section#marvel h2 span{
 	font-weight:100;
 }
 
+/* Ironman */
+section#marvel h2 span:nth-of-type(1){
+	animation: ironman 4s forwards ease-in;
+}
+@keyframes ironman {
+	0%{
+		transform: translateY(-100vh);
+	}
+	
+	30%{
+		transform: translateY(-30vh) rotate(1deg);
+	}
+	
+	40%{
+		transform: translateY(-20vh) rotate(-2deg);
+	}
+	
+	50%{
+		transform: translateY(-10vh) rotate(.5deg);
+	}
+	
+	70%{
+		color: var(--marvel-white);
+		transform: translateY(0)  rotate(0);
+	}
+
+	75%{
+		color: var(--ironman-arc);
+		filter: drop-shadow(0 0 5px var(--marvel-white)) brightness(1);
+	}
+	95%{
+		/* color: var(--ironman-arc); */
+		filter: drop-shadow(0 0 10px var(--marvel-white)) brightness(10);
+	}
+	100%{
+		filter: none;
+	}
+}
