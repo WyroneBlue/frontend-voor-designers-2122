@@ -403,10 +403,6 @@ section#marvel h2 span:nth-of-type(6).start::after{
 	}
 
 	40%{
-		transform: translateY(16vh) translateX(0vw) rotate(370deg);
-	}
-
-	40%{
 		transform: translateY(16vh) translateX(0vw) rotate(390deg) scale(1, .7);
 	}
 	
