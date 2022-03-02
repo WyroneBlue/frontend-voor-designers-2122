@@ -85,6 +85,7 @@ section#marvel{
 	justify-content:center;
 	align-items:center;
 	height: 600px;
+	width: 100%;
 	background-color:var(--marvel-red);
 	overflow: hidden;
 }
