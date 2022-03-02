@@ -46,7 +46,27 @@ button, summary {
 	--cap-blue: #162CA2;
 	--cap-red: #C31D10;
 	--thor-thunder: gold;
-	--hawkeye-arrow: purple;
+	--hawkeye-target-bg: #C669E0;
+	--hawkeye-target-crosshairs: #560072;
+	--hawkeye-arrow: #FBE93C;
+}
+
+@media (prefers-color-scheme: dark) {
+	:root {
+		/* startje */
+		--color-main:#ffffff;
+		--color-background:#eee;
+		--marvel-red: #111;
+		--marvel-white: #F0131E;
+	
+		--ironman-arc: #33C3F7;
+		--cap-blue: #162CA2;
+		--cap-red: #C31D10;
+		--thor-thunder: gold;
+		--hawkeye-target-crosshairs: #C669E0;
+		--hawkeye-target-bg: #560072;
+		--hawkeye-arrow: #FBE93C;
+	}
 }
 
 
