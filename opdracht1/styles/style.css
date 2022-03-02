@@ -337,7 +337,7 @@ section#marvel h2 span:nth-of-type(6).start::after{
 
 	80%{
 		transform: scale(2);
-		background: -webkit-linear-gradient(#A2CD48 51%, #875094 63%);
+		background: -webkit-linear-gradient(#A2CD48 55%, #875094 55% 100%);
 		-webkit-background-clip: text;
 		-webkit-text-fill-color: #0000;
 		font-weight: 700;
