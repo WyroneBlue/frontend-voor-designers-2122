@@ -155,31 +155,38 @@ section#marvel h2 span:nth-of-type(5){
 	animation: widow 3s forwards;
 }
 
-/* Hawkeye */
-section#marvel h2 span:nth-of-type(6){
-	animation: hawkeye 3s forwards;
-	position: relative;
+/* Hawkeye 3D env*/
+section#marvel h2 span:nth-of-type(6).start{
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transform-style: preserve-3d;
+    transform: perspective(10em) rotatey(-40deg);
+    aspect-ratio: 1/2;
+	animation: hawkeye-spin 2.6s forwards;
 }
 
-/* arrows */
-section#marvel h2 span:nth-of-type(6)::before, section#marvel h2 span:nth-of-type(6)::after{
-	content: "";
+/* Hawkeye Target */
+section#marvel h2 span:nth-of-type(6).start::before{
+	content:"";
 	position: absolute;
-	clip-path: polygon(89% 48%, 89% 43%, 100% 50%, 89% 57%, 89% 52%, 0 52%, 0 47%);
-	background-color: var(--hawkeye-arrow);
-	height: 200px;
-	width: 300px;
-	opacity: 1!important;
+	width: 100%;
+	height: 100%;
+
+	animation: hawkeye-target 2.4s forwards;
 }
 
-section#marvel h2 span:nth-of-type(6)::before{
-	left: -132px;
-	animation: hawkeye-arrow1 1s forwards;
-}
-
-section#marvel h2 span:nth-of-type(6)::after{
-	bottom: -13px;
-	animation: hawkeye-arrow2 2s forwards;
+/* Hawkeye Arrow */
+section#marvel h2 span:nth-of-type(6).start::after{
+    content: "";
+    position: absolute;
+    clip-path: polygon(89% 48%, 89% 43%, 100% 50%, 89% 57%, 89% 52%, 0 52%, 0 47%);
+    background-color: var(--hawkeye-arrow);
+    height: 200px;
+    width: 300px;
+    transform: rotateY(90deg) translateX(-100vw);
+	animation: hawkeye-arrow 1.5s forwards;
 }
 
 @keyframes ironman {
