@@ -26,6 +26,7 @@ const animations = [
     {
         name: 'hulk',
         element: document.querySelector("section#marvel h2 span:nth-of-type(4)"),
+        sound: true,
         delay: 4000,
     },
     {
