@@ -75,7 +75,6 @@ const runAnimations = () => {
         timeout += animation.delay - 500;
         setTimeout(() => { 
             runAnimation(animation);
-            console.log('run');
         }, timeout);
 
     });
