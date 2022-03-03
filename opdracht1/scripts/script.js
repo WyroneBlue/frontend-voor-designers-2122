@@ -68,7 +68,7 @@ const runAnimation = (animation) => {
 }
 
 const runAnimations = () => {
-    playSound({ sfx: 'intro2', rate: 1.15, vol: .5 });
+    playSound({ sfx: 'intro', rate: 1.15, vol: .5 });
     let timeout = 0;
     Object.values(animations).forEach((animation, index) => {
         timeout += animation.delay - 500;
