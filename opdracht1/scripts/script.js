@@ -1,43 +1,47 @@
 // JavaScript Document
 console.log("wagwan people");
 
+const body = document.querySelector("body");
 const section = document.querySelector("section#marvel");
-const h2 = section.querySelector("section#marvel h2");
+const h2 = section.querySelector("h2");
+const modal = document.querySelector("section#modal");
+const confirm_yes = modal.querySelector("section button:nth-of-type(1)");
+const confirm_no = modal.querySelector("section button:nth-of-type(2)");
 
 const animations = [
     {
         name: 'ironman',
-        element: document.querySelector("section#marvel h2 span:nth-of-type(1)"),
+        element: h2.querySelector("span:nth-of-type(1)"),
         sound: true,
         delay: 1000,
     },
     {
         name: 'captain',
-        element: document.querySelector("section#marvel h2 span:nth-of-type(2)"),
+        element: h2.querySelector("span:nth-of-type(2)"),
         sound: true,
         delay: 4000,
     },
     {
         name: 'thor',
-        element: document.querySelector("section#marvel h2 span:nth-of-type(3)"),
+        element: h2.querySelector("span:nth-of-type(3)"),
         sound: true,
         delay: 2500,
     },
     {
         name: 'hulk',
-        element: document.querySelector("section#marvel h2 span:nth-of-type(4)"),
+        element: h2.querySelector("span:nth-of-type(4)"),
         sound: true,
         delay: 4000,
     },
     {
         name: 'natasha',
-        element: document.querySelector("section#marvel h2 span:nth-of-type(5)"),
+        element: h2.querySelector("span:nth-of-type(5)"),
         delay: 3000,
         sound: true,
     },
     {
         name: 'hawkeye',
-        element: document.querySelector("section#marvel h2 span:nth-of-type(6)"),
+        element: h2.querySelector("span:nth-of-type(6)"),
         delay: 3000,
         sound: true,
     },
