@@ -121,7 +121,7 @@ section#marvel h2.start{
 section#marvel h2 span{
 	font-family:Marvel, sans-serif;
 	color:var(--marvel-white);
-	font-size: clamp(25vmin, 30vmin, 35vmin);
+	font-size: clamp(5em, 30vmin, 10em);
 	font-weight:100;
 }
 
