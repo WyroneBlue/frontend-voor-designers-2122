@@ -115,6 +115,7 @@ body.start-animations section#marvel h2 span{
 }
 
 section#marvel h2.start{
+	opacity: 1;
 	animation: ending 2.3s forwards ease-out;
 }
 
@@ -129,6 +130,57 @@ section#marvel h2 span{
 body.start-animations section#marvel h2 span{
 	opacity: 0;
 }
+
+section#modal{
+	position: absolute;
+    display: grid;
+    place-items: center;
+    align-content: center;
+    top: 10vh;
+    bottom: 0;
+	left: 0;
+	right: 0;
+    padding: 0 5vw;
+    background-color: var(--modal-color);
+	font-size: clamp(1em, 2em, 3em);
+}
+
+section#modal section{
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: space-around;
+	gap: 10px;
+	width: 100%;
+}
+
+section#modal button{
+	width: clamp(200px, 400px, 100%);
+	padding: 1em 2em;
+	border-radius: 1em;
+	font-size: .5em;
+	font-weight: bold;
+}
+
+section#modal button:nth-of-type(1){
+	color: white;
+	background-color: var(--btn-yes);
+}
+
+section#modal button:nth-of-type(2){
+	background-color: var(--btn-no);
+}
+
+section#modal img{
+	position: absolute;
+	bottom: 0;
+	right: 0;
+	width: clamp(4em, 20vw, 8em);
+}
+
+body.start-animations section#modal, body.no-animations section#modal{
+	display: none;
+}
+
 /* Ironman */
 section#marvel h2 span:nth-of-type(1).start{
 	opacity: 1;
