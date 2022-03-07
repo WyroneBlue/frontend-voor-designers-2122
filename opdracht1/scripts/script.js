@@ -53,10 +53,6 @@ const animations = [
     },
 ];
 
-const getRandomInt = (max) => {
-    return Math.floor(Math.random() * max);
-}
-  
 const playSound = ({sfx, rate = 1, volume = 1}) => {
     let sound = new Audio(`sounds/${sfx}.mp3`);
     sound.playbackRate = rate;
@@ -80,7 +76,6 @@ const runAnimations = () => {
         setTimeout(() => { 
             runAnimation(animation);
         }, timeout);
-
     });
 }
 
