@@ -15,8 +15,6 @@
 @font-face {
 	font-family: 'Marvel';
 	src: url('../fonts/Marvel-Regular.ttf') format('truetype');
-	/* font-weight: normal; */
-	/* font-style: normal; */
 }
 
 
@@ -110,11 +108,9 @@ section#marvel h2.start{
 }
 
 section#marvel h2 span{
-	/* position: relative; */
 	font-family:Marvel, sans-serif;
 	color:var(--marvel-white);
 	font-size: clamp(25vmin, 30vmin, 35vmin);
-	/* font-size: 40vmin; */
 	font-weight:100;
 }
 
@@ -133,7 +129,6 @@ section#marvel h2 span:nth-of-type(2).start{
 section#marvel h2 span:nth-of-type(2).start::before{
 	content: "A";
 	position: absolute;
-	left: -5vw;
 	display:flex;
 	border-radius: 50%;
 	height: 30vmin;
