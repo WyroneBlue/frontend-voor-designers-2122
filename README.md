@@ -14,9 +14,15 @@ Nb. Door *open* toe te voegen aan een *details* element kun je deze standaard op
 
 
 ## Bronnenlijst
-  1. -bron 1-
-  2. -bron 2-
-  3. -...-
+  - https://www.youtube.com/watch?v=Noooxfq6RE0 (Ironman)
+  - https://www.youtube.com/watch?v=MxKR_wnkZpU (Ironman)
+  - https://www.youtube.com/watch?v=XzDnsn4NWwE (Captain America)
+  - https://www.youtube.com/watch?v=d4Dsh8lt0hs (Thor)
+  - https://www.youtube.com/watch?v=2Vfu_VKYZEQ&t=1s (Hulk)
+  - https://www.youtube.com/watch?v=cVFsoBMkpGk (Black Widow)
+  - https://www.youtube.com/watch?v=r3pAgUdcU9c (Hawkeye)
+  - https://www.digitalspy.com/movies/a26593301/avengers-endgame-actors-samuel-l-jackson-hints-nick-fury/
+
 
 
 
@@ -39,6 +45,7 @@ Nb. Door *open* toe te voegen aan een *details* element kun je deze standaard op
   - Letters "stretchen"
   - Spelem met perspectief
   - Geluid timing
+  
  
 </details>
 
