@@ -64,12 +64,13 @@ const playSound = ({sfx, rate = 1, volume = 1}) => {
 const runAnimation = (animation) => {
     animation.element.classList.add('start');
     if(animation.sound){
-        playSound({sfx: animation.name});
+        playSound({ sfx: animation.name, volume:animation.volume });
     }
 }
 
 const runAnimations = () => {
-    playSound({ sfx: 'intro', rate: 1.15, vol: .5 });
+    playSound({ sfx: 'intro', rate: 1.15, volume: .8 });
+    body.classList.add('start-animations');
     let timeout = 0;
     Object.values(animations).forEach((animation, index) => {
         timeout += animation.delay - 500;
