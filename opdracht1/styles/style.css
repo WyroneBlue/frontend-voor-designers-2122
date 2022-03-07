@@ -38,6 +38,11 @@ button, summary {
 	/* startje */
 	--color-main:#111;
 	--color-background:#eee;
+	--modal-color:rgb(255, 255, 255, .9);
+
+	--btn-yes: green;
+	--btn-no: red;
+
 	--marvel-red: #F0131E;
 	--marvel-white: #ffffff;
 	
@@ -49,6 +54,7 @@ button, summary {
 	--hawkeye-target-bg: #C669E0;
 	--hawkeye-target-crosshairs: #560072;
 	--hawkeye-arrow: #FBE93C;
+	
 }
 
 @media (prefers-color-scheme: dark) {
@@ -56,6 +62,7 @@ button, summary {
 		/* startje */
 		--color-main:#ffffff;
 		--color-background:#800000;
+		--modal-color:rgb(0, 0, 0, .6);
 		--marvel-red: #111;
 		--marvel-white: #F0131E;
 	
