@@ -241,29 +241,28 @@ section#marvel h2 span:nth-of-type(6).start::after{
 	}
 	
 	30%{
-		transform: translateY(-30vh) rotate(1deg);
+		transform: translateY(-25vh) rotate(3deg);
 	}
 	
 	40%{
-		transform: translateY(-20vh) rotate(-2deg);
+		transform: translateY(-23vh) rotate(-2deg);
 	}
 	
 	50%{
-		transform: translateY(-10vh) rotate(.5deg);
+		transform: translateY(-20vh);
 	}
 	
-	70%{
+	60%{
 		color: var(--marvel-white);
 		transform: translateY(0)  rotate(0);
 	}
 
 	75%{
 		color: var(--ironman-arc);
-		filter: drop-shadow(0 0 5px var(--marvel-white)) brightness(1);
+		filter: drop-shadow(0 0 5px var(--ironman-arc)) drop-shadow(0 0 10px var(--marvel-white)) brightness(1);
 	}
 	95%{
-		/* color: var(--ironman-arc); */
-		filter: drop-shadow(0 0 10px var(--marvel-white)) brightness(10);
+		filter: drop-shadow(0 0 10px var(--ironman-arc)) drop-shadow(0 0 10px var(--marvel-white)) brightness(10);
 	}
 	100%{
 		filter: none;
