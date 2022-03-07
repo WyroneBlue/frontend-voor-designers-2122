@@ -324,16 +324,16 @@ section#marvel h2 span:nth-of-type(6).start::after{
 		-webkit-text-fill-color: #0000;
 	}
 
-	1%, 50%{
+	0%, 50%{
 		transform: translateY(-6vh) translateX(-100vw) rotate(45deg);
 	}
 
-	90%{
+	85%{
 		color: var(--marvel-white);
 		transform: translateY(-6vh) translateX(40vw) scale(1.3) rotate(100deg);	
 	}
 
-	95%{
+	90%{
 		opacity: 1;
 		transform: translateY(0) translateX(0) scale(.8) rotate(0);	
 	}
@@ -342,8 +342,6 @@ section#marvel h2 span:nth-of-type(6).start::after{
 		opacity: 0;
 		transform: translateY(0) translateX(0) scale(1) rotate(0);	
 	}
-
-
 }
 
 @keyframes thor_storm {
