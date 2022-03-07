@@ -380,6 +380,7 @@ section#marvel h2 span:nth-of-type(6).start::after{
 
 	0%, 50%{
 		transform: translateY(-6vh) translateX(-100vw) rotate(45deg);
+		width: 13vmin;
 	}
 
 	85%{
@@ -466,6 +467,7 @@ section#marvel h2 span:nth-of-type(6).start::after{
 		-webkit-background-clip: text;
 		-webkit-text-fill-color: #0000;
 		font-weight: 700;
+		width: 13vmin;
 	}
 
 	85%{
