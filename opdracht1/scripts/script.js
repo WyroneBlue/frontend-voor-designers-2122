@@ -80,4 +80,9 @@ const runAnimations = () => {
     });
 }
 
-window.addEventListener('DOMContentLoaded', runAnimations);
+const closeModal = () => {
+    body.classList.add('no-animations');
+}
+
+confirm_yes.addEventListener('click', runAnimations);
+confirm_no.addEventListener('click', closeModal);
