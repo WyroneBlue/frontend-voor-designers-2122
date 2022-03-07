@@ -527,6 +527,12 @@ section#marvel h2 span:nth-of-type(6).start::after{
 }
 
 @keyframes hawkeye-target {
+	0%{
+		opacity: 0;
+	}
+	25%{
+		opacity: 1;
+	}
 	0%, 80% {
 		border-radius: 2em;
 
