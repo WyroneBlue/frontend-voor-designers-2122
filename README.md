@@ -22,6 +22,7 @@ Nb. Door *open* toe te voegen aan een *details* element kun je deze standaard op
   - https://www.youtube.com/watch?v=cVFsoBMkpGk (Black Widow)
   - https://www.youtube.com/watch?v=r3pAgUdcU9c (Hawkeye)
   - https://www.digitalspy.com/movies/a26593301/avengers-endgame-actors-samuel-l-jackson-hints-nick-fury/
+  - https://codepen.io/shooft/pen/rNYJWJw (Captain America, Hawkeye)
 
 
 
@@ -33,7 +34,7 @@ Nb. Door *open* toe te voegen aan een *details* element kun je deze standaard op
 
 
   ### Je storyboard:
-  <img src="readme-images/storyboard.jpg" width="375px" alt="storyboard voor opdracht 1">
+  <img src="readme-images/opdracht1/storyboard.jpg" width="375px" alt="storyboard voor opdracht 1">
 
   ### Storyboard aanpassing:
   In plaats van dat de "A", captain america, in een capsule gaat, bouncet hij langs de "muren" net zoals zijn schild dat hij gebruikt. Deze keuze heb ik gemaakt omdat de 1e versie van zijn animation meer zijn geschiedenis was ipv zijn karaktereigenschap, net zoals bij de rest van de letters.
@@ -43,7 +44,7 @@ Nb. Door *open* toe te voegen aan een *details* element kun je deze standaard op
   Aan deze technieken/punten wil ik werken:
   - Transition met kleuren
   - Letters "stretchen"
-  - Spelem met perspectief
+  - Spelen met perspectief
   - Geluid timing
   
  
@@ -58,19 +59,27 @@ Nb. Door *open* toe te voegen aan een *details* element kun je deze standaard op
 
 
   ### Je uitkomst - karakteristiek screenshot(s):
-  <img src="readme-images/dummy-plaatje.svg" width="375px" alt="uitomst opdracht 1">
+  <img src="readme-images/opdracht1/marvel.jpg" width="375px" alt="uitomst opdracht 1">
 
 
   ### Dit ging goed/Heb ik geleerd: 
-  Korte omschrijving met plaatje(s)
+  Het verplaasten van letter naar bepaalde posities vond ik goed gaan. Ook precies op timing. Dit kan ik niet laten zien in foto's, maar dit is wel terug te zien in de animatie. Verder heb ik geleerd over perspectief(3d) en heb ik dit ook toe kunnen passen op de Hawkeye animatie(Letter L).
+  Bij mijn animatie komen de letter 1 voor 1 in beeld met bijpassend geluid, wanneer er wordt gekozen om de animatie af te spelen op het introscherm.
 
-  <img src="readme-images/dummy-plaatje.svg" width="375px" alt="top">
+  <img src="readme-images/opdracht1/intro.jpg" width="375px" alt="introscherm">
+  <img src="readme-images/opdracht1/ironman.jpg" width="375px" alt="Letter M">
+  <img src="readme-images/opdracht1/captain.jpg" width="375px" alt="Letter A">
+  <img src="readme-images/opdracht1/thor.jpg" width="375px" alt="Letter R">
+  <img src="readme-images/opdracht1/hulk.jpg" width="375px" alt="Letter V">
+  <img src="readme-images/opdracht1/widow.jpg" width="375px" alt="Letter E">
+  <img src="readme-images/opdracht1/hawkeye.jpg" width="375px" alt="Letter L">
 
 
   ### Dit was lastig/Is niet gelukt:
-  Korte omschrijving met plaatje(s)
+  Er was niet echt iets dat mij niet lukte. Alles wat ik probeerde toe te passen lukte mij wel. Ik heb alleen een issue op de kleinere schermen en mac/ios. De letters r en v afgesneden wordt aan de zijkant op kleine schermen en op de mac/ios lopen sommige animaties niet helemaal goed. Dit is mij ook helaas niet gelukt om te fixen.
 
-  <img src="readme-images/dummy-plaatje.svg" width="375px" alt="bummer">
+  <img src="readme-images/opdracht1/clipped-thor.jpg" width="375px" alt="Letter R die afgekapt wordt">
+  <img src="readme-images/opdracht1/clipped-hulk.jpg" width="375px" alt="Letter V die afgekapt wordt">
 </details>
 
 
