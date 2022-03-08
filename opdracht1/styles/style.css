@@ -36,8 +36,8 @@ button, summary {
 
 :root {
 	/* startje */
-	--color-main:#111;
-	--color-background:#eee;
+	--color-main: #111;
+	--color-background: #eee;
 	--modal-color:rgb(255, 255, 255, .9);
 
 	--btn-yes: green;
@@ -60,8 +60,8 @@ button, summary {
 @media (prefers-color-scheme: dark) {
 	:root {
 		/* startje */
-		--color-main:#ffffff;
-		--color-background:#800000;
+		--color-main: #ffffff;
+		--color-background: #800000;
 		--modal-color:rgb(0, 0, 0, .6);
 		--marvel-red: #111;
 		--marvel-white: #F0131E;
@@ -372,10 +372,15 @@ section#marvel h2 span:nth-of-type(6).start::after{
 
 @keyframes thor_hamer {
 	0%, 100%{
-		background-image: -webkit-repeating-linear-gradient(left, #fff0 0%, #fff0 6%, #ffffff1a 7.5%), 
-		-webkit-repeating-linear-gradient(left, #0000 0%, #0000 4%, #00000008 4.5%), -webkit-repeating-linear-gradient(left, #fff0 0%, #fff0 1.2%, #ffffff26 2.2%), linear-gradient(180deg, #c7c7c7 0%, #e6e6e6 47%, #c7c7c7 53%, #b3b3b3 100%);
+		background-image: 
+			-webkit-repeating-linear-gradient(left, #fff0 0%, #fff0 6%, #ffffff1a 7.5%), 
+			-webkit-repeating-linear-gradient(left, #0000 0%, #0000 4%, #00000008 4.5%), 
+			-webkit-repeating-linear-gradient(left, #fff0 0%, #fff0 1.2%, #ffffff26 2.2%), 
+			linear-gradient(180deg, #c7c7c7 0%, #e6e6e6 47%, #c7c7c7 53%, #b3b3b3 100%);
+		background-clip: text;
 		-webkit-background-clip: text;
 		-webkit-text-fill-color: #0000;
+		color: #0000;
 	}
 
 	0%, 50%{
@@ -456,23 +461,28 @@ section#marvel h2 span:nth-of-type(6).start::after{
 
 	50%{
 		transform: scale(1.5);
-		background: -webkit-linear-gradient(#fff, #fff);
+		background: linear-gradient(#fff, #fff);
+		background-clip: text;
 		-webkit-background-clip: text;
 		-webkit-text-fill-color: #0000;
+		color: #0000;
 	}
 
 	60%{
 		transform: scale(2);
-		background: -webkit-linear-gradient(#A2CD48 55%, #875094 55% 100%);
+		background: linear-gradient(#A2CD48 55%, #875094 55% 100%);
+		background-clip: text;
 		-webkit-background-clip: text;
 		-webkit-text-fill-color: #0000;
+		color: #0000;
 		font-weight: 700;
 		width: 13vmin;
 	}
 
 	85%{
 		transform: scale(1);
-		background: -webkit-linear-gradient(#fff, #fff);
+		background: linear-gradient(#fff, #fff);
+		background-clip: text;
 		-webkit-background-clip: text;
 	}
 
