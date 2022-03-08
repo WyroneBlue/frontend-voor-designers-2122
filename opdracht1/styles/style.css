@@ -145,6 +145,17 @@ section#modal{
 	font-size: clamp(1em, 2em, 3em);
 }
 
+section#modal span{
+	position: absolute;
+	top: 0;
+	left: 0;
+	padding: .25em .5em;
+	border-radius: 0 .5em .5em 0;
+	color: var(--color-background);
+	background-color: var(--marvel-red);
+	font-size: clamp(.8em, 5vmin, 1.5em);
+}
+
 section#modal section{
 	display: flex;
 	flex-wrap: wrap;
