@@ -67,13 +67,13 @@ const loadHTML = (refresh = false) => {
         let inSaved = checkMovieInSaved(movie.id);
 
         let html = `
-            <li class="movie-item" data-movie_id='${movie.id}'>
+            <li class="movie-item" >
                 <img src="${movie_img_prefix + movie.poster_path}" alt="${movie.title} poster">
                 <span>${movie.title}</span>
                 ${
                     inSaved 
-                    ? '<button value="remove">Remove from saved movies</button>'
-                    : '<button value="add">Save movie</button>'
+                    ? `<button data-movie_id='${movie.id}' value="remove">Remove from saved movies</button>`
+                    : `<button data-movie_id="${movie.id}" value="add">Save movie</button>`
                 }
                 
             </li>
@@ -149,7 +149,6 @@ const toggleItemButton = (btn) => {
 }
 
 const addMovieToSaved = async(e) => {
-    let btn = e.querySelector('button');
     let movie_id = e.dataset.movie_id;
     const movieFound = checkMovieInSaved(movie_id);
     if (!movieFound) {
@@ -158,7 +157,7 @@ const addMovieToSaved = async(e) => {
             storage.movies.items.push(movie);
             updateLocalStorage(storage.movies.name, storage.movies.items);
             loadSavedMovies();
-            toggleItemButton(btn);
+            toggleItemButton(e);
         } else {
             alert("Er is iets mis gegaan! probeer het opnieuw");
         }
@@ -179,17 +178,18 @@ const removeSavedMovie = async(e) => {
 
 const handleListItem = (e) => {
     if (e.target.tagName.toLowerCase() === 'li'){
-        addMovieToSaved(e.target);
+        let btn = e.target.querySelector('button');
+        addMovieToSaved(btn);
     }
     
     if (e.target.tagName.toLowerCase() === 'button'){
     
         if(e.target.value == 'add') {
-            addMovieToSaved(e.target.parentNode);
+            addMovieToSaved(e.target);
         }
         
         if(e.target.value == 'remove') {
-            removeSavedMovie(e.target.parentNode);
+            removeSavedMovie(e.target);
             toggleItemButton(e.target);
         }
     }
