@@ -40,7 +40,12 @@ const emptySavedMovies = savedMovieSection.querySelector('h2 button');
 const moreMovies = document.querySelector('#more-movies');
 const moreMoviesLoader = moreMovies.querySelector('#more-movies span');
 
+// Filters
+const toggleFiltersBtn = document.querySelector('#toggle-filters');
+
+// Back to Top
 const backToTopBtn = document.querySelector('#back-to-top');
+
 
 let searchCount = 0; 
 let input = '';
