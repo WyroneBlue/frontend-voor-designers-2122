@@ -1,7 +1,9 @@
 // JavaScript Document
 console.log("Wagwan");
 
+import { key } from './env.js';
 // API Variables
+const public_key = key;
 const search_route = `https://api.themoviedb.org/3/search/movie?api_key=${public_key}&language=en-US&include_adult=false`;
 const popular_route = `https://api.themoviedb.org/3/trending/movie/week?api_key=${public_key}`;
 
