@@ -25,3 +25,15 @@ let movieResults = [];
 let page = 1;
 let routeToUse = popular_route;
 
+import { 
+    debounce, 
+    isInView,
+    goToTop
+} from './functions.js';
+import { 
+    storage, 
+    getLocalStorage, 
+    updateLocalStorage, 
+    emptyLocalStorage 
+} from './localStorage.js';
+
