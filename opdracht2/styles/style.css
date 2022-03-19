@@ -61,6 +61,7 @@ body {
 	color:var(--color-main);
 	background-color:var(--color-background);
 	padding: calc(var(--header-padding) + var(--header-height)) 20px 20px;
+	padding-top: var(--header-height);
 	scroll-behavior: smooth;
 }
 
@@ -89,6 +90,9 @@ main{
 	gap: 20px;
 }
 
+main > section {
+ 	padding: 20px;
+}
 #search{
 	display: flex;
     flex-direction: column;
