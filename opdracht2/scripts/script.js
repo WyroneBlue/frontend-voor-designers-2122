@@ -42,6 +42,7 @@ const moreMoviesLoader = moreMovies.querySelector('#more-movies span');
 
 // Filters
 const toggleFiltersBtn = document.querySelector('#toggle-filters');
+const filtersSection = document.querySelector('#filters-menu');
 
 // Back to Top
 const backToTopBtn = document.querySelector('#back-to-top');
@@ -214,6 +215,10 @@ const toggleSavedMovies = () => {
     loadSavedMovies();
 }
 
+const toggleFilters = () => {
+    filtersSection.classList.toggle('open');
+}
+
 const checkScroll = debounce(() => {
     if(isInView(moreMovies)){
         moreMoviesLoader.classList.add('loading');
@@ -244,3 +249,4 @@ moreMovies.addEventListener('click', getNextPage);
 movieResultsSection.addEventListener('click', handleListItem);
 emptySavedMovies.addEventListener('click', emptySavedMoviesList);
 backToTopBtn.addEventListener('click', goToTop);
+toggleFiltersBtn.addEventListener('click', toggleFilters);
