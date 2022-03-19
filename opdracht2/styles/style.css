@@ -93,9 +93,19 @@ main{
 main > section {
  	padding: 20px;
 }
+
 #search{
+	position: sticky;
+	top: calc(var(--header-height) - 5px);
 	display: flex;
     flex-direction: column;
+	z-index: 2;
+	transition: background-color .3s ease-out;
+}
+
+#search.sticky{
+	min-height: var(--search-height);
+	background-color: var(--header-background);
 }
 
 #search input{
@@ -114,9 +124,12 @@ main > section {
 	display: flex;
 	justify-content: space-between;
 	align-items: center;
-	height: 150px;
+	height: 200px;
 	background-color: white;
-	padding: var(--movie-padding);
+	/* padding: var(--movie-padding); */
+	border-radius: 20px 0 0 20px;
+}
+
 #movie-results ul li img{
 	height: 100%;
 	width: auto;

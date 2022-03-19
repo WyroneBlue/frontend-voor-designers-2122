@@ -25,8 +25,9 @@ const movie_img_prefix = 'https://image.tmdb.org/t/p/w500';
 const savedBtn = document.querySelector('header button');
 
 // Search bar
-const search = document.querySelector('#search-input');
-const searchMsg = document.querySelector('#search span');
+const searchSection = document.querySelector('#search');
+const search = searchSection.querySelector('#search-input');
+const searchMsg = searchSection.querySelector('span');
 
 // Movie List Variables
 const movieResultsSection = document.querySelector('#movie-results ul');
@@ -213,12 +214,14 @@ const checkScroll = debounce(() => {
         moreMoviesLoader.classList.remove('loading');
     }
 
-    if(!isInView(search)){
+    if(window.scrollY > 0){
+        searchSection.classList.add('sticky');
         backToTopBtn.classList.add('show');
     } else {
+        searchSection.classList.remove('sticky');
         backToTopBtn.classList.remove('show');
     }
-}, 100);
+}, 50);
 
 const onDOMContentLoaded = async() => {
     await loadPopularMovies();
