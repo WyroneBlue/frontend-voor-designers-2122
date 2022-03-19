@@ -21,8 +21,11 @@ const search_route = `https://api.themoviedb.org/3/search/movie?api_key=${public
 const popular_route = `https://api.themoviedb.org/3/trending/movie/week?api_key=${public_key}`;
 
 // Header Variables
-const search = document.querySelector('#search-input');
 const savedBtn = document.querySelector('header button');
+
+// Search bar
+const search = document.querySelector('#search-input');
+const searchMsg = document.querySelector('#search span');
 
 // Movie List Variables
 const movieResultsSection = document.querySelector('#movie-results ul');
@@ -37,6 +40,7 @@ const moreMoviesLoader = moreMovies.querySelector('#more-movies span');
 
 const backToTopBtn = document.querySelector('#back-to-top');
 
+let searchCount = 0; 
 let input = '';
 let movieResults = [];
 let page = 1;
@@ -102,6 +106,7 @@ const fetchMovies = async ({route, query, search = true, refresh = true}) => {
     let json = await response.json();
     movieResults = json.items ?? json.results;
     loadHTML(refresh);
+    searchCount = json.total_results;
     return;
 }
 
