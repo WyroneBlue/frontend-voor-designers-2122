@@ -19,6 +19,7 @@ import { key } from './env.js';
 const public_key = key;
 const search_route = `https://api.themoviedb.org/3/search/movie?api_key=${public_key}&language=en-US&include_adult=false`;
 const popular_route = `https://api.themoviedb.org/3/trending/movie/week?api_key=${public_key}`;
+const movie_img_prefix = 'https://image.tmdb.org/t/p/w500';
 
 // Header Variables
 const savedBtn = document.querySelector('header button');
@@ -61,11 +62,12 @@ const loadHTML = (refresh = false) => {
     if(refresh){
         movieResultsSection.innerHTML = '';
     }
-    Object.values(movieResults).forEach(movie => {
+    Object.values(movieResults).forEach(async movie => {
         let inSaved = checkMovieInSaved(movie.id);
 
         let html = `
             <li class="movie-item" data-movie_id='${movie.id}'>
+                <img src="${movie_img_prefix + movie.poster_path}" alt="${movie.title} poster">
                 <span>${movie.title}</span>
                 ${
                     inSaved 

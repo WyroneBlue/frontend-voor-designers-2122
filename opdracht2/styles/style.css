@@ -113,6 +113,11 @@ main{
 	height: 150px;
 	background-color: white;
 	padding: var(--movie-padding);
+#movie-results ul li img{
+	height: 100%;
+	width: auto;
+	/* border-radius: 20px 0 0 20px; */
+	border-radius: inherit;
 }
 
 #movie-results ul li button{
