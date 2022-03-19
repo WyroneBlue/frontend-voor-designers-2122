@@ -26,8 +26,24 @@ const goToTop = () => {
     });
 }
 
+const clAdd = (el, val) => {
+    el.classList.add(val); 
+}
+
+const clRemove = (el, val) => {
+    el.classList.remove(val); 
+
+}
+
+const clToggle = (el, val) => {
+    el.classList.toogle(val); 
+}
+
 export {
     isInView, 
     debounce,
-    goToTop
+    goToTop,
+    clAdd,
+    clRemove,
+    clToggle,
 }

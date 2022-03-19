@@ -4,7 +4,10 @@ console.log("Wagwan");
 import { 
     debounce, 
     isInView,
-    goToTop
+    goToTop,
+    clAdd,
+    clRemove,
+    clToggle
 } from './functions.js';
 import { 
     storage, 
@@ -211,27 +214,27 @@ const emptySavedMoviesList = () => {
 }
 
 const toggleSavedMovies = () => {
-    savedMovieSection.classList.toggle('open');
+    clToggle(savedMovieSection, 'open')
     loadSavedMovies();
 }
 
 const toggleFilters = () => {
-    filtersSection.classList.toggle('open');
+    clToggle(filtersSection, 'open')
 }
 
 const checkScroll = debounce(() => {
     if(isInView(moreMovies)){
-        moreMoviesLoader.classList.add('loading');
+        clAdd(moreMoviesLoader, 'loading');
         getNextPage();
-        moreMoviesLoader.classList.remove('loading');
+        clRemove(moreMoviesLoader, 'loading');
     }
 
     if(window.scrollY > 0){
-        searchSection.classList.add('sticky');
-        backToTopBtn.classList.add('show');
+        clAdd(searchSection, 'sticky');
+        clAdd(backToTopBtn, 'show');
     } else {
-        searchSection.classList.remove('sticky');
-        backToTopBtn.classList.remove('show');
+        clRemove(searchSection, 'sticky');
+        clRemove(backToTopBtn, 'show');
     }
 }, 50);
 
