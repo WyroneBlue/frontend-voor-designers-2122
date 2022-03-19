@@ -9,13 +9,41 @@
 	<title>Opdracht 2: Interactie galore - Frontend voor Designers</title>
 	
 	<link href="styles/style.css" rel="stylesheet">
-  <link rel="icon" type="image/svg+xml" href="images/favicon.svg">
+	<link rel="icon" type="image/svg+xml" href="images/favicon.svg">
 </head>
 
-<body>
-	<h1>Opdracht 2</h1>
+<body style="overflow: hidden">
+	<header>
+		<h1>Movie List</h1>	
+		<button>
+			<img src="/images/heart-filled.svg" alt="">
+		</button>
+	</header>
+	<main>
+		<section id="saved-movies">
+			<h2>Saved Movies <button>🚮</button></h2>
+			<p></p>
+			<ul></ul>
+		</section>
+		<section id="search">
+			<label for="search-input">Search</label>
+			<input type="search" name="search" id="search-input" placeholder="Movie Title...">
+		</section>
+		<section id="movie-results">
+			<ul></ul>
+		</section>
+		<section id="more-movies">
+			<span></span>
+		</section>
+		<button id="back-to-top">
+			⬆
+		</button>
+	</main>
+	<footer>
+		
+	</footer>
 
-	<script src="scripts/script.js"></script>
+	<script type="module" src="scripts/script.js"></script>
 </body>
 	
 </html>
