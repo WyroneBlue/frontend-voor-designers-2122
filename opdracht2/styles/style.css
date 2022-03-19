@@ -136,6 +136,15 @@ main > section {
 	border-radius: inherit;
 }
 
+#movie-results ul li section{
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+    width: 100%;
+    height: 100%;
+	padding: var(--movie-padding);
+}
+
 #movie-results ul li button{
 	position: absolute;
 	right: var(--movie-padding);

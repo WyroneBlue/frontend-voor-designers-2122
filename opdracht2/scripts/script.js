@@ -69,7 +69,9 @@ const loadHTML = (refresh = false) => {
         let html = `
             <li class="movie-item" >
                 <img src="${movie_img_prefix + movie.poster_path}" alt="${movie.title} poster">
-                <span>${movie.title}</span>
+                <section>
+                    <span>${movie.title}</span>
+                </section>
                 ${
                     inSaved 
                     ? `<button data-movie_id='${movie.id}' value="remove">Remove from saved movies</button>`
