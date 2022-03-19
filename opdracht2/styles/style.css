@@ -35,12 +35,20 @@ ul{
 /* CUSTOM PROPERTIES */
 /*********************/
 :root {
-	/* startje */
+	
+	/* Globaal */
 	--color-main:#111;
 	--color-background:#eee;
+	
+	/* Header */
 	--header-padding: 1.25rem;
 	--header-height: 5rem;
 	--header-background: red;
+	
+	/* search */
+	--search-height: 90px;
+	
+	/* Movie */
 	--movie-padding: 10px;
 }
 
