@@ -189,7 +189,6 @@ main > section {
 	}
 }
 
-
 #saved-movies {
 	position: fixed;
 	top: var(--header-height);
@@ -236,7 +235,7 @@ main > section {
 	border: 2px solid black;
 	pointer-events:none;
 	user-select: none;
-	transition: opacity .3s
+	transition: opacity .3s;
 }
 
 #back-to-top.show {
