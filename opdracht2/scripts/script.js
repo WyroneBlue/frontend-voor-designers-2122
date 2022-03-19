@@ -1,7 +1,20 @@
 // JavaScript Document
 console.log("Wagwan");
 
+import { 
+    debounce, 
+    isInView,
+    goToTop
+} from './functions.js';
+import { 
+    storage, 
+    getLocalStorage, 
+    updateLocalStorage, 
+    emptyLocalStorage 
+} from './localStorage.js';
+
 import { key } from './env.js';
+
 // API Variables
 const public_key = key;
 const search_route = `https://api.themoviedb.org/3/search/movie?api_key=${public_key}&language=en-US&include_adult=false`;
@@ -29,21 +42,15 @@ let movieResults = [];
 let page = 1;
 let routeToUse = popular_route;
 
-import { 
-    debounce, 
-    isInView,
-    goToTop
-} from './functions.js';
-import { 
-    storage, 
-    getLocalStorage, 
-    updateLocalStorage, 
-    emptyLocalStorage 
-} from './localStorage.js';
-
 
 const checkMovieInSaved = (id) => {
     return getLocalStorage(storage.movies.name).some(movie => movie.id == id);
+}
+
+const getMovie = async(movie_id) => {
+    
+    let response = await fetch(`https://api.themoviedb.org/3/movie/${movie_id}?api_key=${public_key}&language=en-US`)
+    return await response.json();
 }
 
 const loadHTML = (refresh = false) => {
@@ -98,20 +105,30 @@ const fetchMovies = async ({route, query, search = true, refresh = true}) => {
     return;
 }
 
+const loadPopularMovies = async () => {
+    return await fetchMovies({ route: routeToUse, search: false});
+}
+
+const searchMovies = debounce((e) => {
+    page = 1;
+    input = e.target.value;
+    if(input.length > 1) {
+        searchMsg.innerHTML = `Movies found(${searchCount})`;
+        routeToUse = search_route;
+        fetchMovies({ route: routeToUse, query: input });
+        
+    } else {
+        searchMsg.innerHTML = "";
+        routeToUse = popular_route;
+        loadPopularMovies({ search: false });
+    }
+}, 100);
 
 const getNextPage = async() => {
     page++;
     await fetchMovies({ route: routeToUse, query: input, refresh: false });
     return;
 }
-
-const getMovie = async(movie_id) => {
-    
-    let response = await fetch(`https://api.themoviedb.org/3/movie/${movie_id}?api_key=${public_key}&language=en-US`)
-    return await response.json();
-}
-
-
 
 const toggleItemButton = (btn) => {
     if(btn.value == 'add'){
@@ -176,24 +193,6 @@ const emptySavedMoviesList = () => {
     loadSavedMovies();
     loadHTML();
 }
-
-
-const loadPopularMovies = async () => {
-    return await fetchMovies({ route: routeToUse, search: false});
-}
-
-const searchMovies = debounce((e) => {
-    page = 1;
-    input = e.target.value;
-    if(input.length > 1) {
-        routeToUse = search_route;
-        fetchMovies({ route: routeToUse, query: input });
-        
-    } else {
-        routeToUse = popular_route;
-        loadPopularMovies({ search: false });
-    }
-}, 250);
 
 const toggleSavedMovies = () => {
     savedMovieSection.classList.toggle('open');
