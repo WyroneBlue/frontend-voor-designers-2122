@@ -254,6 +254,7 @@ const checkScroll = debounce(() => {
 }, 50);
 
 const checkShake = (e) => {
+    vibrate(100);
     let check = confirm('Are you sure you want to empty your list?');
     if(check){
         emptySavedMoviesList();
