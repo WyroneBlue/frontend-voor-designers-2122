@@ -79,9 +79,27 @@ header{
 }
 
 header button{
-	border: none;
+	position: relative;
 	background-color: var(--header-background);
+	border: none;
 }
+
+header button span{
+	position: absolute;
+	top: -5px;
+	right: -3px;
+	width: 16px;
+	height: 16px;
+	border-radius: 50%;
+	background-color: green;
+	opacity: 0;
+	transition: opacity 0.3s;
+}
+
+header button span.filled{
+	opacity: 1;
+}
+
 
 main{
 	display: flex;

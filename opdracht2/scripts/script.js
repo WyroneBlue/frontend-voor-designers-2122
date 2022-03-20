@@ -28,6 +28,7 @@ const movie_img_prefix = 'https://image.tmdb.org/t/p/w500';
 // Header Variables
 const header = document.querySelector('header');
 const savedBtn = header.querySelector('button');
+const savedMoviesCount = header.querySelector('button span');
 
 // Search bar
 const searchSection = document.querySelector('#search');
@@ -114,6 +115,7 @@ const loadSavedMovies = () => {
     savedMoviesList.innerHTML = '';
     let movies = storage.movies.items = getLocalStorage(storage.movies.name);
     let msg = '';
+    savedMoviesCount.textContent = movies.length
     if(movies.length){
         movies.forEach(movie => {
             let html = `
@@ -125,8 +127,10 @@ const loadSavedMovies = () => {
         });
 
         msg = `${movies.length} movie${(movies.length > 1 ? 's' : '')} added`;
+        clAdd(savedMoviesCount, 'filled')
     } else {
         msg = `No movies added yet!`;
+        clRemove(savedMoviesCount, 'filled')
     }
     savedMoviesMsg.textContent = msg;
 }
