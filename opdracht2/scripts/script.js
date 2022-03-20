@@ -256,12 +256,15 @@ const checkScroll = debounce(() => {
 }, 50);
 
 const checkShake = (e) => {
-    vibrate({ ms: [100]});
-    let check = confirm('Are you sure you want to empty your list?');
-    if(check){
-        vibrate({ ms: [10, 10]});
-        emptySavedMoviesList();
-    }
+    vibrate(150);
+    setTimeout(() => {
+
+        let check = confirm('Are you sure you want to empty your list?');
+        if(check){
+            vibrate([50, 0, 50]);
+            emptySavedMoviesList();
+        }
+    }, 150)
 }
 
 const initShake = () => {

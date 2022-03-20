@@ -5,7 +5,7 @@ const checkVibration = () => {
 	return true;
 };
 
-const vibrate = ({ms = [10]}) => {
+const vibrate = (ms = [10]) => {
 	if(checkVibration){
 		navigator.vibrate(ms);
 	}
