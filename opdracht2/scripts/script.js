@@ -262,7 +262,7 @@ const checkShake = (e) => {
 
 const initShake = () => {
     var myShakeEvent = new Shake({
-        threshold: 5
+        threshold: 10
     });
     // start listening to device motion
     myShakeEvent.start();
