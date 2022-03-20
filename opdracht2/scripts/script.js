@@ -253,12 +253,23 @@ const checkScroll = debounce(() => {
     }
 }, 50);
 
+let shakeCount = 0;
+const checkShake = (e) => {
+    let confirm = confirm('Are you sure you want to empty your list?');
+    if(confirm){
+        shakeCount++;
+        alert('list empty');
+        alert(shakeCount);
+    }
+}
+
 const onDOMContentLoaded = async() => {
     await loadPopularMovies();
     loadSavedMovies();
     window.addEventListener("scroll", checkScroll);
 }
 
+window.addEventListener('shake', checkShake);
 window.addEventListener("DOMContentLoaded", onDOMContentLoaded);
 
 search.addEventListener('input', searchMovies);
