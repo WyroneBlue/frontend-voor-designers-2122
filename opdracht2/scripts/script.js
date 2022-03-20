@@ -255,6 +255,7 @@ const checkScroll = debounce(() => {
 
 let shakeCount = 0;
 const checkShake = (e) => {
+    alert('Shaking')
     let confirm = confirm('Are you sure you want to empty your list?');
     if(confirm){
         shakeCount++;
@@ -263,14 +264,24 @@ const checkShake = (e) => {
     }
 }
 
+const initShake = async() => {
+    var myShakeEvent = new Shake({
+        threshold: 15
+    });
+    // start listening to device motion
+    myShakeEvent.start();
+    window.addEventListener('shake', checkShake, false);
+}
+
 const onDOMContentLoaded = async() => {
     await loadPopularMovies();
     loadSavedMovies();
     window.addEventListener("scroll", checkScroll);
 }
 
-window.addEventListener('shake', checkShake);
+// window.addEventListener('shake', checkShake);
 window.addEventListener("DOMContentLoaded", onDOMContentLoaded);
+window.addEventListener('load', initShake)
 
 search.addEventListener('input', searchMovies);
 savedBtn.addEventListener('click', toggleSavedMovies);
