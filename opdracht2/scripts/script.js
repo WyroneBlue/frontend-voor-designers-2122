@@ -266,6 +266,7 @@ const initShake = () => {
     });
     // start listening to device motion
     myShakeEvent.start();
+    window.addEventListener('shake', checkShake, false);
 }
 
 const onDOMContentLoaded = async() => {
@@ -274,7 +275,6 @@ const onDOMContentLoaded = async() => {
     window.addEventListener("scroll", checkScroll);
 }
 
-window.addEventListener('shake', checkShake);
 window.addEventListener("DOMContentLoaded", onDOMContentLoaded);
 window.addEventListener('load', initShake)
 
