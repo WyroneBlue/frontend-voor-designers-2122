@@ -15,6 +15,7 @@ import {
     updateLocalStorage, 
     emptyLocalStorage 
 } from './localStorage.js';
+import { vibrate } from './vibration';
 
 import { key } from './env.js';
 
