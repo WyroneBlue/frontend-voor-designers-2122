@@ -36,7 +36,7 @@ const clRemove = (el, val) => {
 }
 
 const clToggle = (el, val) => {
-    el.classList.toogle(val); 
+    el.classList.toggle(val); 
 }
 
 export {
