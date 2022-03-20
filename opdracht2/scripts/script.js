@@ -225,7 +225,7 @@ const emptySavedMoviesList = () => {
     storage.movies.items = [];
     emptyLocalStorage(storage.movies.name)
     loadSavedMovies();
-    loadHTML();
+    loadPopularMovies();
 }
 
 const toggleSavedMovies = () => {
