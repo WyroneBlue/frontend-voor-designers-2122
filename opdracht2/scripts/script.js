@@ -15,7 +15,7 @@ import {
     updateLocalStorage, 
     emptyLocalStorage 
 } from './localStorage.js';
-import { vibrate } from './vibration';
+import { vibrate } from './vibration.js';
 
 import { key } from './env.js';
 
@@ -256,9 +256,10 @@ const checkScroll = debounce(() => {
 }, 50);
 
 const checkShake = (e) => {
-    vibrate(100);
+    vibrate({ ms: [100]});
     let check = confirm('Are you sure you want to empty your list?');
     if(check){
+        vibrate({ ms: [10, 10]});
         emptySavedMoviesList();
     }
 }
