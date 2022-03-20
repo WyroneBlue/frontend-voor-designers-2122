@@ -190,6 +190,11 @@ const addMovieToSaved = async(e) => {
             updateLocalStorage(storage.movies.name, storage.movies.items);
             loadSavedMovies();
             toggleItemButton(e);
+
+            clAdd(savedMoviesCount, 'movie-added');
+            savedMoviesCount.addEventListener('animationend', (e) => {
+                clRemove(savedMoviesCount, 'movie-added')
+            });
         } else {
             alert("Er is iets mis gegaan! probeer het opnieuw");
         }

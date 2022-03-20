@@ -96,10 +96,37 @@ header button span{
 	transition: opacity 0.3s;
 }
 
+
 header button span.filled{
 	opacity: 1;
 }
 
+header button span.filled.movie-added{
+	animation: movie-added 1.3s ease-in forwards;
+}
+
+@keyframes movie-added {
+	0%{
+		transform: scale(1) rotateY(0);	
+	}	
+	40%{
+		transform: scale(2.5);	
+	}
+	50% {
+		transform: scale(2.5) rotateY(180deg);	
+	}
+	
+	60%{
+		transform: scale(2.5) rotateY(360deg);	
+	}
+
+	85%{
+		transform: scale(.6) rotateY(360deg);	
+	}
+	100%{
+		transform: scale(1) rotateY(360deg);	
+	}
+}
 
 main{
 	display: flex;
