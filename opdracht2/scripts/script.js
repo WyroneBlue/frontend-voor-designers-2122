@@ -25,7 +25,8 @@ const popular_route = `https://api.themoviedb.org/3/trending/movie/week?api_key=
 const movie_img_prefix = 'https://image.tmdb.org/t/p/w500';
 
 // Header Variables
-const savedBtn = document.querySelector('header button');
+const header = document.querySelector('header');
+const savedBtn = header.querySelector('button');
 
 // Search bar
 const searchSection = document.querySelector('#search');
