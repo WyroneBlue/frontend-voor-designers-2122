@@ -74,12 +74,27 @@ const loadHTML = (refresh = false) => {
     }
     Object.values(movieResults).forEach(async movie => {
         let inSaved = checkMovieInSaved(movie.id);
+        let fullMovieInfo = await getMovie(movie.id);
+
+        let genres = '';
+        fullMovieInfo.genres.forEach(genre => {
+            genres += `
+                <li>${genre.name}</li>
+            `
+        });
 
         let html = `
             <li class="movie-item" >
                 <img src="${movie_img_prefix + movie.poster_path}" alt="${movie.title} poster">
                 <section>
-                    <span>${movie.title}</span>
+                    <div>
+                        <h3>${movie.title}</h3>
+                        <span>${movie.release_date}</span>
+                    </div>
+                    <p>${movie.overview}</p>
+                    <ul>
+                        ${genres}
+                    </ul>
                 </section>
                 ${
                     inSaved 
