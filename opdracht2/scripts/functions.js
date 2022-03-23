@@ -39,6 +39,11 @@ const clToggle = (el, val) => {
     el.classList.toggle(val); 
 }
 
+const checkTag = (el, val) => {
+    return el.target.tagName.toLowerCase() === val;
+}
+
+
 export {
     isInView, 
     debounce,
@@ -46,4 +51,5 @@ export {
     clAdd,
     clRemove,
     clToggle,
+    checkTag
 }
