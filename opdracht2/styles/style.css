@@ -376,6 +376,51 @@ main > section {
 	padding: var(--header-padding);
 }
 
+#filters-menu section{
+	display: flex;
+	flex-direction: column;
+	gap: 5px;
+}
+
+#filters-menu section div{
+	display: flex;
+	flex-wrap: wrap;
+	gap: 5px;
+}
+
+#filters-menu section div label{
+	position:relative;
+	display:grid;
+	align-content: center;
+	/* height:2em; */
+	padding: .25em .5em;
+	background-color:white;
+	border: 1px solid black;
+	border-radius:20px;
+}
+
+#filters-menu section div input{
+	position: absolute;
+	width: 1px;
+	height: 1px;
+	padding: 0;
+	margin: -1px;
+	overflow: hidden;
+	white-space: nowrap; /* added line */
+	border: 0;
+}
+
+#filters-menu section div input:focus-visible  + label{
+	box-shadow:0 0 0 3px blue;
+}
+#filters-menu section div input:checked + label{
+	background-color: grey;
+}
+/* #filters-menu section ul li{
+	background-color:aqua;
+	padding: 5px 10px;
+} */
+
 #fixed-buttons {
 	position: fixed;
 	bottom: 10px;
