@@ -221,7 +221,7 @@ main > section {
 #movie-results > ul > li button{
 	position: absolute;
 	top: var(--movie-padding);
-	left: var(--movie-padding);
+	right: var(--movie-padding);
 }
 
 @media (min-width: 567px) {
