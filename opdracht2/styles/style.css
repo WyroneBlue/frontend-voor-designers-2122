@@ -232,22 +232,6 @@ main > section {
 		border-radius: 20px 0 0 20px;
 	}
 
-	/* #movie-results > ul > li section p{
-		text-overflow: ellipsis;
-		display: -webkit-box;
-		line-clamp: 4; 
-		-webkit-line-clamp: 4; 
-		-webkit-box-orient: vertical;
-		overflow: auto;
-	} */
-
-	#movie-results > ul > li section span{
-		position: absolute;
-		top: var(--movie-padding);
-		right: var(--movie-padding);
-		align-self: end;
-	}
-
 	#movie-results > ul > li img{
 		height: 100%;
 		width: auto;
