@@ -7,7 +7,8 @@ import {
     goToTop,
     clAdd,
     clRemove,
-    clToggle
+    clToggle,
+    checkTag
 } from './functions.js';
 import { 
     storage, 
@@ -74,10 +75,67 @@ const getMovie = async(movie_id) => {
     return await response.json();
 }
 
+const addMovieToSaved = async(e) => {
+    let movie_id = e.dataset.movie_id;
+    const movieFound = checkMovieInSaved(movie_id);
+    if (!movieFound) {
+        let movie = await getMovie(movie_id);
+        if(movie.success != false){
+            storage.movies.items.push(movie);
+            updateLocalStorage(storage.movies.name, storage.movies.items);
+            loadSavedMovies();
+            toggleItemButton(e);
+
+            clAdd(savedMoviesCount, 'movie-added');
+            savedMoviesCount.addEventListener('animationend', (e) => {
+                clRemove(savedMoviesCount, 'movie-added')
+            });
+        } else {
+            alert("Er is iets mis gegaan! probeer het opnieuw");
+        }
+    } else {
+        alert("Movie already exists");
+    }
+}
+
+const removeSavedMovie = async(e) => {
+    let movie_id = e.dataset.movie_id;
+    const filteredSavedMovies = storage.movies.items.filter(movie => {
+        return movie.id != movie_id;
+    });
+    storage.movies.items = filteredSavedMovies;
+    updateLocalStorage(storage.movies.name, storage.movies.items);
+    loadSavedMovies();
+}
+
+const checkDblClick = (e) => {
+    var d = new Date();
+    var t = d.getTime();
+    if(t - lastClick < 250) {
+        dblClick = true;
+    } else {
+        dblClick = false;
+    }
+    lastClick = t;
+}
+
+const handleMovieCard = (item) => {
+    console.log(item.value);
+    if(item.value == 'add') {
+        addMovieToSaved(item);
+    }
+    
+    if(item.value == 'remove') {
+        removeSavedMovie(item);
+        toggleItemButton(item);
+    }
+}
+
 const loadHTML = (refresh = false) => {
     if(refresh){
         movieResultsSection.innerHTML = '';
     }
+
     Object.values(movieResults).forEach(async movie => {
         let inSaved = checkMovieInSaved(movie.id);
         let fullMovieInfo = await getMovie(movie.id);
@@ -111,6 +169,24 @@ const loadHTML = (refresh = false) => {
             </li>
         `;
         movieResultsSection.insertAdjacentHTML('beforeend', html);
+        let listItem = movieResultsSection.querySelector('li.movie-item:last-child');
+        // console.log(listItem);
+        let listItemBtn = listItem.querySelector('button');
+        // console.log(listItemBtn);
+
+        listItemBtn.addEventListener('click', function(){
+            console.log('btn: ');
+            handleMovieCard(this);
+        })
+        
+        listItem.addEventListener('click', function(){
+            checkDblClick();
+            if(dblClick){
+                console.log('listitem: ');
+                let btn = this.querySelector('button');
+                handleMovieCard(btn);
+            }
+        })
     })
 }
 
@@ -185,75 +261,6 @@ const toggleItemButton = (btn) => {
     }
 }
 
-const addMovieToSaved = async(e) => {
-    let movie_id = e.dataset.movie_id;
-    const movieFound = checkMovieInSaved(movie_id);
-    if (!movieFound) {
-        let movie = await getMovie(movie_id);
-        if(movie.success != false){
-            storage.movies.items.push(movie);
-            updateLocalStorage(storage.movies.name, storage.movies.items);
-            loadSavedMovies();
-            toggleItemButton(e);
-
-            clAdd(savedMoviesCount, 'movie-added');
-            savedMoviesCount.addEventListener('animationend', (e) => {
-                clRemove(savedMoviesCount, 'movie-added')
-            });
-        } else {
-            alert("Er is iets mis gegaan! probeer het opnieuw");
-        }
-    } else {
-        alert("Movie already exists");
-    }
-}
-
-const removeSavedMovie = async(e) => {
-    let movie_id = e.dataset.movie_id;
-    const filteredSavedMovies = storage.movies.items.filter(movie => {
-        return movie.id != movie_id;
-    });
-    storage.movies.items = filteredSavedMovies;
-    updateLocalStorage(storage.movies.name, storage.movies.items);
-    loadSavedMovies();
-}
-
-const checkDblClick = (e) => {
-    var d = new Date();
-    var t = d.getTime();
-    if(t - lastClick < 500) {
-        dblClick = true;
-    } else {
-        dblClick = false;
-    }
-    lastClick = t;
-}
-
-const handleListItem = (e) => {
-    checkDblClick();
-    if (e.target.tagName.toLowerCase() === 'li'){
-        let btn = e.target.querySelector('button');
-        addMovieToSaved(btn);
-    }
-
-    if(dblClick && e.target.tagName.toLowerCase() === 'img'){
-        let btn = e.target.parentNode.querySelector('button');
-        addMovieToSaved(btn);
-    }
-    
-    if (e.target.tagName.toLowerCase() === 'button'){
-    
-        if(e.target.value == 'add') {
-            addMovieToSaved(e.target);
-        }
-        
-        if(e.target.value == 'remove') {
-            removeSavedMovie(e.target);
-            toggleItemButton(e.target);
-        }
-    }
-}
-
 const emptySavedMoviesList = () => {
     storage.movies.items = [];
     emptyLocalStorage(storage.movies.name)
@@ -313,13 +320,20 @@ const onDOMContentLoaded = async() => {
     window.addEventListener("scroll", checkScroll);
 }
 
+// On load
 window.addEventListener("DOMContentLoaded", onDOMContentLoaded);
 window.addEventListener('load', initShake)
 
+// Header
 search.addEventListener('input', searchMovies);
 savedBtn.addEventListener('click', toggleSavedMovies);
+
+// Movie results
 moreMovies.addEventListener('click', getNextPage);
-movieResultsSection.addEventListener('click', handleListItem);
+
+// Saved Movies
 emptySavedMovies.addEventListener('click', emptySavedMoviesList);
+
+// Floating Buttons
 backToTopBtn.addEventListener('click', goToTop);
 toggleFiltersBtn.addEventListener('click', toggleFilters);
