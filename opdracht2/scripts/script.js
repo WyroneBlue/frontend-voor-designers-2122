@@ -60,6 +60,9 @@ let movieResults = [];
 let page = 1;
 let routeToUse = popular_route;
 
+// Double Click Check
+let lastClick = 0;
+let dblClick = false;
 
 const checkMovieInSaved = (id) => {
     return getLocalStorage(storage.movies.name).some(movie => movie.id == id);
@@ -215,9 +218,26 @@ const removeSavedMovie = async(e) => {
     loadSavedMovies();
 }
 
+const checkDblClick = (e) => {
+    var d = new Date();
+    var t = d.getTime();
+    if(t - lastClick < 500) {
+        dblClick = true;
+    } else {
+        dblClick = false;
+    }
+    lastClick = t;
+}
+
 const handleListItem = (e) => {
+    checkDblClick();
     if (e.target.tagName.toLowerCase() === 'li'){
         let btn = e.target.querySelector('button');
+        addMovieToSaved(btn);
+    }
+
+    if(dblClick && e.target.tagName.toLowerCase() === 'img'){
+        let btn = e.target.parentNode.querySelector('button');
         addMovieToSaved(btn);
     }
     
