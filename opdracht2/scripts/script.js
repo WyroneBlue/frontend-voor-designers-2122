@@ -120,7 +120,6 @@ const checkDblClick = (e) => {
 }
 
 const handleMovieCard = (item) => {
-    console.log(item.value);
     if(item.value == 'add') {
         addMovieToSaved(item);
     }
@@ -170,21 +169,18 @@ const loadHTML = (refresh = false) => {
         `;
         movieResultsSection.insertAdjacentHTML('beforeend', html);
         let listItem = movieResultsSection.querySelector('li.movie-item:last-child');
-        // console.log(listItem);
         let listItemBtn = listItem.querySelector('button');
-        // console.log(listItemBtn);
 
         listItemBtn.addEventListener('click', function(){
-            console.log('btn: ');
             handleMovieCard(this);
         })
         
         listItem.addEventListener('click', function(){
             checkDblClick();
             if(dblClick){
-                console.log('listitem: ');
                 let btn = this.querySelector('button');
                 handleMovieCard(btn);
+                // let btn = this.querySelector('button');
             }
         })
     })
