@@ -45,7 +45,36 @@
 		</section>
 		<section id="filters-menu">
 			<h2>Filters <span></span></h2>
-			<ul></ul>
+
+			<section>
+
+				<h3>Sort by:</h3>
+				<div id="order">
+					<input type="radio" id="order-popular" class="sr-only" name="order" checked/>
+					<label for="order-popular">Popularity</label>
+
+					<input type="radio" id="order-az" class="sr-only" name="order" />
+					<label for="order-az">A-Z</label>
+
+					<input type="radio" id="order-za" class="sr-only" name="order" />
+					<label for="order-za">Z-A</label>
+				</div>
+			</section>
+			
+			<section>
+				<h3>Genre:</h3>
+				<div id="genre">
+					<input type="checkbox" id="genre-action" class="sr-only" name="genre" />
+					<label for="genre-action">Action</label>
+
+					<input type="checkbox" id="genre-romkom" class="sr-only" name="genre" />
+					<label for="genre-romkom">Romantisce Komedie</label>
+
+					<input type="checkbox" id="genre-superhero" class="sr-only" name="genre" />
+					<label for="genre-superhero">Super Hero</label>
+				</div>
+			</section>
+
 		</section>
 		<section id="fixed-buttons">
 			<button id="back-to-top">
