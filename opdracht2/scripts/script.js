@@ -171,16 +171,17 @@ const loadHTML = (refresh = false) => {
         let listItem = movieResultsSection.querySelector('li.movie-item:last-child');
         let listItemBtn = listItem.querySelector('button');
 
-        listItemBtn.addEventListener('click', function(){
-            handleMovieCard(this);
+        listItemBtn.addEventListener('click', function(e){
+            if(checkTag(e, 'button')){
+                handleMovieCard(this);
+            }
         })
         
-        listItem.addEventListener('click', function(){
+        listItem.addEventListener('click', function(e){
             checkDblClick();
-            if(dblClick){
-                let btn = this.querySelector('button');
-                handleMovieCard(btn);
+            if(dblClick && !checkTag(e, 'button')){
                 // let btn = this.querySelector('button');
+                handleMovieCard(listItemBtn);
             }
         })
     })
