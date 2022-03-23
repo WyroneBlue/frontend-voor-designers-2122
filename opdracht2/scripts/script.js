@@ -39,8 +39,8 @@ const searchMsg = searchSection.querySelector('span');
 const movieResultsSection = document.querySelector('#movie-results ul');
 const savedMovieSection = document.querySelector('#saved-movies');
 const savedMoviesList = savedMovieSection.querySelector('ul');
-const savedMoviesMsg = savedMovieSection.querySelector('p');
-const emptySavedMovies = savedMovieSection.querySelector('h2 button');
+const savedMoviesMsg = savedMovieSection.querySelector('div p');
+const emptySavedMovies = savedMovieSection.querySelector('div button');
 
 // Loader Variables
 const moreMovies = document.querySelector('#more-movies');
@@ -128,9 +128,11 @@ const loadSavedMovies = () => {
 
         msg = `${movies.length} movie${(movies.length > 1 ? 's' : '')} added`;
         clAdd(savedMoviesCount, 'filled')
+        clRemove(savedMovieSection, 'empty');
     } else {
         msg = `No movies added yet!`;
-        clRemove(savedMoviesCount, 'filled')
+        clRemove(savedMoviesCount, 'filled');
+        clAdd(savedMovieSection, 'empty');
     }
     savedMoviesMsg.textContent = msg;
 }
