@@ -344,11 +344,22 @@ main > section {
 	transform: translateX(0);
 }
 
-#saved-movies h2{
+#saved-movies > section h2{
     position: sticky;
     top: 0;
     background-color: #f00;
 	padding: 5px 0;
+}
+
+#saved-movies div{
+	display: flex;
+	justify-content: space-between;
+	padding: 10px 0;
+	border-bottom: 1px solid black;
+}
+
+#saved-movies.empty  div button{
+	display: none;
 }
 
 #saved-movies ul{
@@ -365,6 +376,7 @@ main > section {
 	bottom: 0;
 	display: flex;
 	flex-direction: column;
+	gap: 10px;
 	height: 0;
 	padding: 0;
 	background-color: red;
