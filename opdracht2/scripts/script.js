@@ -2,6 +2,13 @@
 console.log("Wagwan");
 
 import { 
+    filters,
+    checkActiveFilters,
+    resetFilters,
+    updateFilterCount,
+    checkFilterCount 
+} from './filter.js';
+import { 
     debounce, 
     isInView,
     goToTop,
@@ -51,6 +58,11 @@ const moreMoviesLoader = moreMovies.querySelector('#more-movies span');
 // Filters
 const toggleFiltersBtn = document.querySelector('#toggle-filters');
 const filtersSection = document.querySelector('#filters-menu');
+const filterForm = document.querySelector('#filters-menu form');
+const genreInput = filterForm.querySelector('section > div#genre');
+
+const filtersCount = document.querySelector('#filters-menu h2 > span');
+const filtersList = document.querySelector('#filters-menu ul');
 
 // Back to Top
 const backToTopBtn = document.querySelector('#back-to-top');
@@ -108,8 +120,39 @@ const addMovieToSaved = async(e, undoRemove = false) => {
     }
 }
 
-const removeSavedMovie = async(e) => {
+const resetUndoRemoveInterval = () => {
+    clRemove(undoRemoveSection, 'open');
+    clearInterval(undoRemoveTimerInterval);
+    undoRemoveTimer.textContent = "(5)";
+    tempUndoRemoveId = '';
+    undoTimerSecs = 5;
+}
+
+const undoRemove = async() => {
+    clearInterval(undoRemoveTimerInterval);
+    await addMovieToSaved(tempUndoRemoveId, true);
+    resetUndoRemoveInterval()
+}
+
+const handleUndoRemove = async (movie_id) => {
+    undoTimerSecs = 5;
+    tempUndoRemoveId = movie_id;
+    
+    undoRemoveTimerInterval = setInterval(() => {
+        undoTimerSecs--;
+        undoRemoveTimer.textContent = `(${undoTimerSecs})`;
+        if(undoTimerSecs == 0) {
+            resetUndoRemoveInterval()
+        }
+    }, 1000);
+}
+
+const removeSavedMovie = async(e, undoRemove) => {
     let movie_id = e.dataset.movie_id;
+    if(undoRemove){
+        clAdd(undoRemoveSection, 'open');
+        handleUndoRemove(movie_id);
+    }
     const filteredSavedMovies = storage.movies.items.filter(movie => {
         return movie.id != movie_id;
     });
@@ -129,15 +172,33 @@ const checkDblClick = (e) => {
     lastClick = t;
 }
 
-const handleMovieCard = (item) => {
-    if(item.value == 'add') {
+const handleMovieCard = (item, undoRemove) => {
+
+    if(clHas(item,'add') && !undoRemove){
         addMovieToSaved(item);
     }
     
-    if(item.value == 'remove') {
+    if(clHas(item,'remove') && !undoRemove) {
         removeSavedMovie(item);
         toggleItemButton(item);
+    } else {
+        removeSavedMovie(item, undoRemove);
     }
+}
+
+const handleCardClick = (listItem, btn, fromSavedList = false) => {
+    btn.addEventListener('click', function(e){
+        if(checkTag(e, 'button')){
+            handleMovieCard(this, fromSavedList);
+        }
+    })
+    
+    listItem.addEventListener('click', function(e){
+        checkDblClick();
+        if(dblClick && !checkTag(e, 'button')){
+            handleMovieCard(btn, fromSavedList);
+        }
+    })
 }
 
 const loadHTML = (refresh = false) => {
@@ -171,29 +232,17 @@ const loadHTML = (refresh = false) => {
                 </section>
                 ${
                     inSaved 
-                    ? `<button data-movie_id='${movie.id}' value="remove">Remove from saved movies</button>`
-                    : `<button data-movie_id="${movie.id}" value="add">Save movie</button>`
+                    ? `<button data-movie_id='${movie.id}' class="remove"></button>`
+                    : `<button data-movie_id="${movie.id}" class="add"></button>`
                 }
                 
             </li>
         `;
+
         movieResultsSection.insertAdjacentHTML('beforeend', html);
         let listItem = movieResultsSection.querySelector('li.movie-item:last-child');
         let listItemBtn = listItem.querySelector('button');
-
-        listItemBtn.addEventListener('click', function(e){
-            if(checkTag(e, 'button')){
-                handleMovieCard(this);
-            }
-        })
-        
-        listItem.addEventListener('click', function(e){
-            checkDblClick();
-            if(dblClick && !checkTag(e, 'button')){
-                // let btn = this.querySelector('button');
-                handleMovieCard(listItemBtn);
-            }
-        })
+        handleCardClick(listItem, listItemBtn);
     })
 }
 
@@ -201,15 +250,21 @@ const loadSavedMovies = () => {
     savedMoviesList.innerHTML = '';
     let movies = storage.movies.items = getLocalStorage(storage.movies.name);
     let msg = '';
+
     savedMoviesCount.textContent = movies.length
     if(movies.length){
         movies.forEach(movie => {
             let html = `
-            <li class="movie-item" data-movie_id='${movie.id}'>
-                <span>${movie.title}</span>
-            </li>
+                <li class="movie-item" data-movie_id='${movie.id}'>
+                    <img src="${movie_img_prefix + movie.poster_path}" alt="${movie.title} poster">
+                    <span>${movie.title}</span>
+                    <button data-movie_id='${movie.id}' class="remove"></button>
+                </li>
             `;
             savedMoviesList.insertAdjacentHTML('beforeend', html);
+            let savedMovie = savedMoviesList.querySelector('li.movie-item:last-child');
+            let savedMovieBtn = savedMovie.querySelector('button');
+            handleCardClick(savedMovie, savedMovieBtn, true);
         });
 
         msg = `${movies.length} movie${(movies.length > 1 ? 's' : '')} added`;
@@ -237,20 +292,20 @@ const loadPopularMovies = async () => {
     return await fetchMovies({ route: routeToUse, search: false});
 }
 
-const searchMovies = debounce((e) => {
+const searchMovies = async(e) => {
     page = 1;
     input = e.target.value;
     if(input.length > 1) {
         searchMsg.innerHTML = `Movies found(${searchCount})`;
         routeToUse = search_route;
-        fetchMovies({ route: routeToUse, query: input });
+        await fetchMovies({ route: routeToUse, query: input });
         
     } else {
         searchMsg.innerHTML = "";
         routeToUse = popular_route;
-        loadPopularMovies({ search: false });
+        await loadPopularMovies({ search: false });
     }
-}, 100);
+};
 
 const getNextPage = async() => {
     page++;
@@ -259,12 +314,12 @@ const getNextPage = async() => {
 }
 
 const toggleItemButton = (btn) => {
-    if(btn.value == 'add'){
-        btn.textContent = 'Remove from saved movies';
-        btn.value = 'remove';
+    if(clHas(btn, 'add')){
+        clRemove(btn, 'add');
+        clAdd(btn, 'remove');
     } else {
-        btn.textContent = 'Save movie';
-        btn.value = 'add';
+        clRemove(btn, 'remove');
+        clAdd(btn, 'add');
     }
 }
 
@@ -284,7 +339,14 @@ const toggleFilters = () => {
     clToggle(filtersSection, 'open')
 }
 
-const checkScroll = debounce(() => {
+const handeFilterInput = (e) => {
+    if(checkTag(e, 'input')){
+        let filterType = e.target.parentNode.id
+        checkFilterCount(filterType)
+    }
+}
+
+const checkScroll = () => {
     if(isInView(moreMovies)){
         clAdd(moreMoviesLoader, 'loading');
         getNextPage();
@@ -298,7 +360,7 @@ const checkScroll = debounce(() => {
         clRemove(searchSection, 'sticky');
         clRemove(backToTopBtn, 'show');
     }
-}, 50);
+};
 
 const checkShake = (e) => {
     vibrate(150);
@@ -344,3 +406,6 @@ emptySavedMovies.addEventListener('click', emptySavedMoviesList);
 // Floating Buttons
 backToTopBtn.addEventListener('click', goToTop);
 toggleFiltersBtn.addEventListener('click', toggleFilters);
+
+// Undo remove
+undoRemoveBtn.addEventListener('click', undoRemove);
