@@ -2,13 +2,6 @@
 console.log("Wagwan");
 
 import { 
-    filters,
-    checkActiveFilters,
-    resetFilters,
-    updateFilterCount,
-    checkFilterCount 
-} from './filter.js';
-import { 
     debounce, 
     isInView,
     goToTop,
