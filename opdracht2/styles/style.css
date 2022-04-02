@@ -651,3 +651,32 @@ main > section {
 	pointer-events:all;
 	user-select: none;
 }
+
+#undo-remove{
+	position: fixed;
+	bottom: 20px;
+	left: 0;
+	width: 50%;
+	transform: translateX(-100%);
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	gap: 10px;
+	background-color: var(--color-main);
+	border-radius: 0 1em 1em 0;
+	opacity: 0;
+	z-index: 99;
+	transition: all .3s ease-out;
+}
+
+#undo-remove.open{
+	opacity: 1;
+	transform: translateX(0);
+}
+
+#undo-remove button{
+	padding: 10px 15px;
+	border-radius: 20px;
+	color: var(--color-text);
+	background-color: var(--color-secondary);
+}
