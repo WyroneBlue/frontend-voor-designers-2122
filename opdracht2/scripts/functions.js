@@ -32,11 +32,14 @@ const clAdd = (el, val) => {
 
 const clRemove = (el, val) => {
     el.classList.remove(val); 
-
 }
 
 const clToggle = (el, val) => {
     el.classList.toggle(val); 
+}
+
+const clHas = (el, val) => {
+    return el.classList.contains(val); 
 }
 
 const checkTag = (el, val) => {
@@ -51,5 +54,6 @@ export {
     clAdd,
     clRemove,
     clToggle,
+    clHas,
     checkTag
 }
