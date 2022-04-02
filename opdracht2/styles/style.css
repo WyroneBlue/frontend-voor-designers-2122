@@ -468,12 +468,14 @@ main > section {
     top: 0;
     background-color: var(--color-secondary);
 	padding: 5px 0 0;
+	z-index: 10;
 }
 
 #saved-movies div{
 	display: flex;
 	justify-content: space-between;
 	align-items: center;
+	gap: 10px;
 	padding: 10px 0;
 	border-bottom: 1px solid black;
 }
