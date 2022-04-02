@@ -38,19 +38,28 @@ ul{
 :root {
 	
 	/* Globaal */
-	--color-main:#111;
-	--color-background:#eee;
+	/* --color-main:#111;
+	--color-background:#171A30;
+	--color-secondary:#FC094C; */
+	--color-main:#171A30;
+	--color-secondary:#FC094C;
+	--color-text: white;
+	--color-background:var(--color-main);
 	
 	/* Header */
 	--header-padding: 1.25rem;
 	--header-height: 5rem;
-	--header-background: red;
+	--header-background: var(--color-secondary);
 	
 	/* search */
 	--search-height: 90px;
 	
 	/* Movie */
-	--movie-padding: 10px;
+	--movie-padding: 5px;
+
+	--radius-rounded-small: 0.325rem;
+	--radius-rounded-bottom: 0 0 0.5rem 0.5rem;
+}
 }
 
 
