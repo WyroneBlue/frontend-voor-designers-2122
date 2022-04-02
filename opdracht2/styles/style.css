@@ -287,8 +287,50 @@ main > section {
 
 #movie-results > ul > li button{
 	position: absolute;
-	top: var(--movie-padding);
-	right: var(--movie-padding);
+	top: calc(var(--movie-padding) * 2.5);
+	right: calc(var(--movie-padding) * 2.5);
+	width: 100px;
+	height: 0;
+}
+
+#movie-results > ul > li button.remove{
+	animation: movie-added .3s forwards;
+}
+
+#movie-results > ul > li button::before,
+#movie-results > ul > li button::after{
+	content: "";
+	position: absolute;
+	border-radius: 50px 50px 0 0;
+	background: var(--color-text);
+	transition: background 0.3s ease-out;
+}
+
+#movie-results > ul > li button::before,
+#movie-results > ul > li button::after{
+	width: 52px;
+	height: 80px;
+}
+
+#movie-results > ul > li button.remove::before,
+#movie-results > ul > li button.remove::after{
+	background: var(--color-secondary);
+}
+
+#movie-results > ul > li button::before{
+	transform: rotate(-45deg);
+	transform-origin: 0 100%;
+}
+
+#movie-results > ul > li button::before{
+	left: 50px;
+}
+
+#movie-results > ul > li button::after{
+	left: 0;
+	transform: rotate(45deg);
+	transform-origin: 100% 100%;
+}
 }
 
 @media (min-width: 567px) {
