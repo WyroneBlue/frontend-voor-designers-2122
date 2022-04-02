@@ -331,6 +331,17 @@ main > section {
 	transform: rotate(45deg);
 	transform-origin: 100% 100%;
 }
+
+@keyframes movie-added {
+	0%{
+		transform: scale(1);	
+	}	
+	50% {
+		transform: scale(.8);	
+	}
+	100%{
+		transform: scale(1);	
+	}
 }
 
 @media (min-width: 567px) {
