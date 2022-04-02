@@ -68,7 +68,7 @@ ul{
 /****************/
 body {
 	font-family:eenfont, sans-serif;
-	color:var(--color-main);
+	color:var(--color-text);
 	background-color:var(--color-background);
 	padding-top: var(--header-height);
 	scroll-behavior: smooth;
