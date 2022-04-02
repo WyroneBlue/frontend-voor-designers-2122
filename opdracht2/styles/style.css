@@ -363,7 +363,6 @@ main > section {
 	#movie-results > ul{
 		flex-direction: row;
 		flex-wrap: wrap;
-		justify-content: space-between;
 	}
 
 	#movie-results > ul > li{
@@ -445,7 +444,7 @@ main > section {
 
 #saved-movies {
 	position: fixed;
-	top: var(--header-height);
+	top: calc(var(--header-height) - 1vh);
 	bottom: 0;
 	right: 0;
 	width: 100%;
@@ -454,7 +453,7 @@ main > section {
 	flex-direction: column;
 	gap: 10px;
 	padding: 0 20px 20px;
-	background-color: red;
+	background-color: var(--color-secondary);
 	z-index: 3;
 	transition: transform 0.3s ease-out;
 	overflow: auto;
@@ -476,6 +475,15 @@ main > section {
 	justify-content: space-between;
 	padding: 10px 0;
 	border-bottom: 1px solid black;
+}
+
+#saved-movies div button{
+	padding: 10px 15px;
+	border-radius: 20px;
+	font: inherit;
+	font-weight: bold;
+	color: var(--color-text);
+	background-color: var(--color-main);
 }
 
 #saved-movies.empty  div button{
