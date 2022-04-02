@@ -85,6 +85,7 @@ header{
 	height: var(--header-height);
 	padding: var(--header-padding);
 	background-color: var(--header-background);
+	border-radius: var(--radius-rounded-bottom);
 	z-index: 4;
 }
 
@@ -138,16 +139,18 @@ header button div::after{
 
 header button span{
 	position: absolute;
-	top: -5px;
-	right: -3px;
-	width: 16px;
-	height: 16px;
+	top: 0;
+	right: -8px;
+	display: grid;
+    align-content: center;
+	width: 25px;
+	height: 25px;
 	border-radius: 50%;
-	background-color: green;
+	background-color: var(--color-text);
 	opacity: 0;
 	transition: opacity 0.3s;
+	z-index: 5;
 }
-
 
 header button span.filled{
 	opacity: 1;
