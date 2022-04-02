@@ -236,9 +236,8 @@ main > section {
 	justify-content: space-between;
 	align-items: center;
 	height: auto;
-	/* width: 100%; */
 	background-color: white;
-	/* padding: var(--movie-padding); */
+	padding: var(--movie-padding);
 	border-radius: 20px 20px 0 0;
 }
 
@@ -251,8 +250,6 @@ main > section {
 #movie-results > ul > li section{
 	display: flex;
 	flex-direction: column;
-	/* justify-content: center; */
-	/* justify-content: space-evenly; */
 	justify-content: end;
     gap: 10px;
 	width: 100%;
