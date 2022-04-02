@@ -8,6 +8,7 @@ import {
     clAdd,
     clRemove,
     clToggle,
+    clHas,
     checkTag
 } from './functions.js';
 import { 
