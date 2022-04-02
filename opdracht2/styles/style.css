@@ -99,8 +99,41 @@ header h1 span{
 
 header button{
 	position: relative;
-	background-color: var(--header-background);
+	background-color: transparent;
+	width: 50px;
+	height: 62px;
+}
+
+header button div{
+	position: absolute;
+	top: calc(var(--movie-padding) * 2.5);
+	right: calc(var(--movie-padding) * 2.5);
+	width: 37px;
+	height: 0;
 	border: none;
+}
+
+header button div::before,
+header button div::after{
+	content: "";
+	position: absolute;
+	width: 26px;
+	height: 40px;
+	border-radius: 50px 50px 0 0;
+	background: var(--color-main);
+	transition: background 0.3s ease-out;
+}
+
+header button div::before{
+	left: 25px;
+	transform: rotate(-45deg);
+	transform-origin: 0 100%;
+}
+
+header button div::after{
+	left: 0;
+	transform: rotate(45deg);
+	transform-origin: 100% 100%;
 }
 
 header button span{
