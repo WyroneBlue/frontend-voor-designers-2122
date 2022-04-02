@@ -55,10 +55,17 @@ const filtersSection = document.querySelector('#filters-menu');
 // Back to Top
 const backToTopBtn = document.querySelector('#back-to-top');
 
+// Undo remove
+const undoRemoveSection = document.querySelector('#undo-remove');
+const undoRemoveTimer = undoRemoveSection.querySelector('p span');
+const undoRemoveBtn = undoRemoveSection.querySelector('button');
+let undoRemoveTimerInterval;
+let undoTimerSecs;
 
 let searchCount = 0; 
 let input = '';
 let movieResults = [];
+let tempUndoRemoveId;
 let page = 1;
 let routeToUse = popular_route;
 
