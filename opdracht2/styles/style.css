@@ -209,6 +209,15 @@ main > section {
 	background-color: var(--header-background);
 }
 
+#search.sticky label{
+	font-size: clamp(1em, 5vmin, 3em);
+}
+
+#search.sticky span, #search.sticky label{
+	font-weight: bold;
+	color: var(--color-main);
+}
+
 #search input{
 	padding: 5px 10px;
 	border-radius: 5px;
