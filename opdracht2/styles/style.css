@@ -199,7 +199,9 @@ main > section {
 	display: flex;
     flex-direction: column;
 	z-index: 2;
-	transition: background-color .3s ease-out;
+	transition: all .3s ease-out;
+	border-radius: var(--radius-rounded-bottom);
+	gap: 5px;
 }
 
 #search.sticky{
