@@ -83,8 +83,8 @@ const getMovie = async(movie_id) => {
     return await response.json();
 }
 
-const addMovieToSaved = async(e) => {
-    let movie_id = e.dataset.movie_id;
+const addMovieToSaved = async(e, undoRemove = false) => {
+    let movie_id = (!undoRemove) ? e.dataset.movie_id : e;
     const movieFound = checkMovieInSaved(movie_id);
     if (!movieFound) {
         let movie = await getMovie(movie_id);
@@ -92,7 +92,9 @@ const addMovieToSaved = async(e) => {
             storage.movies.items.push(movie);
             updateLocalStorage(storage.movies.name, storage.movies.items);
             loadSavedMovies();
-            toggleItemButton(e);
+            if(!undoRemove){
+                toggleItemButton(e);
+            }
 
             clAdd(savedMoviesCount, 'movie-added');
             savedMoviesCount.addEventListener('animationend', (e) => {
