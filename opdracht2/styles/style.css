@@ -157,22 +157,22 @@ header button span.filled{
 }
 
 header button span.filled.movie-added{
-	animation: movie-added 1.3s ease-in forwards;
+	animation: movie-added-counter 1.3s ease-in forwards;
 }
 
-@keyframes movie-added {
+@keyframes movie-added-counter {
 	0%{
 		transform: scale(1) rotateY(0);	
 	}	
 	40%{
-		transform: scale(2.5);	
+		transform: scale(1.5);	
 	}
 	50% {
-		transform: scale(2.5) rotateY(180deg);	
+		transform: scale(1.5) rotateY(180deg);	
 	}
 	
 	60%{
-		transform: scale(2.5) rotateY(360deg);	
+		transform: scale(1.5) rotateY(360deg);	
 	}
 
 	85%{
