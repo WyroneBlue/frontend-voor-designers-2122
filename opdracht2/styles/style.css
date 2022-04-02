@@ -370,7 +370,7 @@ main > section {
 		flex-direction: column;
 		height: auto;
 		border-radius: 20px 20px 0 0;
-		flex: 0 0 calc(50% - 10px);
+		max-width: calc(50% - 10px);
 	}
 
 	#movie-results > ul > li section{
@@ -392,7 +392,7 @@ main > section {
 
 @media (min-width: 1024px) {
 	#movie-results > ul > li{
-		flex: 0 0 calc(calc(100% / 3) - 14px);
+		max-width: calc(calc(100% / 3) - 14px);
 	}
 }
 
