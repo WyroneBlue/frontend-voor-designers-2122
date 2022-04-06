@@ -327,7 +327,7 @@ const toggleItemButton = (btn) => {
 
 const emptySavedMoviesList = () => {
     storage.movies.items = [];
-    emptyLocalStorage(storage.movies.name)
+    emptyLocalStorage(storage.movies)
     loadSavedMovies();
     loadPopularMovies();
 }
