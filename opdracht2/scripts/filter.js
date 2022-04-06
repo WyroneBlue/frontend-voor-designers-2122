@@ -25,7 +25,6 @@ const checkFiltersCount = () => {
 }
 
 const updateFilter = (type, value) => {
-    console.log(filters.items[type]);
     filters.items[type].items = value;
 }
 
