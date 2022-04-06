@@ -36,6 +36,7 @@ const clRemove = (el, val) => {
 
 const clToggle = (el, val) => {
     el.classList.toggle(val); 
+    return clHas(el, val);
 }
 
 const clHas = (el, val) => {
