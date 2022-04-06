@@ -2,6 +2,13 @@
 console.log("Wagwan");
 
 import { 
+    filters,
+    checkFilter,
+    updateFilter,
+    resetFilters,
+    checkFiltersCount 
+} from './filter.js';
+import { 
     debounce, 
     isInView,
     goToTop,
@@ -52,10 +59,11 @@ const moreMoviesLoader = moreMovies.querySelector('#more-movies span');
 const toggleFiltersBtn = document.querySelector('#toggle-filters');
 const filtersSection = document.querySelector('#filters-menu');
 const filterForm = document.querySelector('#filters-menu form');
-const genreInput = filterForm.querySelector('section > div#genre');
+const allFilterInputs = filterForm.querySelectorAll('#filters-menu form > section > div');
 
 const filtersCount = document.querySelector('#filters-menu h2 > span');
 const filtersList = document.querySelector('#filters-menu ul');
+const resetFiltersBtn = document.querySelector('#filters-menu > section button');
 
 // Back to Top
 const backToTopBtn = document.querySelector('#back-to-top');
@@ -70,6 +78,7 @@ let undoTimerSecs;
 let searchCount = 0; 
 let input = '';
 let movieResults = [];
+let moviesToRender = [];
 let tempUndoRemoveId;
 let page = 1;
 let routeToUse = popular_route;
@@ -79,7 +88,7 @@ let lastClick = 0;
 let dblClick = false;
 
 const checkMovieInSaved = (id) => {
-    return getLocalStorage(storage.movies.name).some(movie => movie.id == id);
+    return getLocalStorage(storage.movies, 'items').some(movie => movie.id == id);
 }
 
 const getMovie = async(movie_id) => {
@@ -95,7 +104,7 @@ const addMovieToSaved = async(e, undoRemove = false) => {
         let movie = await getMovie(movie_id);
         if(movie.success != false){
             storage.movies.items.push(movie);
-            updateLocalStorage(storage.movies.name, storage.movies.items);
+            updateLocalStorage(storage.movies);
             loadSavedMovies();
             if(!undoRemove){
                 toggleItemButton(e);
@@ -150,7 +159,7 @@ const removeSavedMovie = async(e, undoRemove) => {
         return movie.id != movie_id;
     });
     storage.movies.items = filteredSavedMovies;
-    updateLocalStorage(storage.movies.name, storage.movies.items);
+    updateLocalStorage(storage.movies);
     loadSavedMovies();
 }
 
@@ -241,7 +250,7 @@ const loadHTML = (refresh = false) => {
 
 const loadSavedMovies = () => {
     savedMoviesList.innerHTML = '';
-    let movies = storage.movies.items = getLocalStorage(storage.movies.name);
+    let movies = storage.movies.items = getLocalStorage(storage.movies, 'items');
     let msg = '';
 
     savedMoviesCount.textContent = movies.length
@@ -275,9 +284,9 @@ const fetchMovies = async ({route, query, search = true, refresh = true}) => {
     const params =  search != true ? '' : (query != '' ? `&query=${query}&page=${page}` : `&page=${page}`);
     const response = await fetch(route + params);
     let json = await response.json();
-    movieResults = json.items ?? json.results;
-    loadHTML(refresh);
+    moviesToRender = movieResults = json.items ?? json.results;
     searchCount = json.total_results;
+    loadHTML(refresh);
     return;
 }
 
@@ -285,20 +294,20 @@ const loadPopularMovies = async () => {
     return await fetchMovies({ route: routeToUse, search: false});
 }
 
-const searchMovies = async(e) => {
+const searchMovies = debounce(async(e) => {
     page = 1;
     input = e.target.value;
     if(input.length > 1) {
-        searchMsg.innerHTML = `Movies found(${searchCount})`;
         routeToUse = search_route;
         await fetchMovies({ route: routeToUse, query: input });
+        searchMsg.innerHTML = `Movies found(${searchCount})`;
         
     } else {
-        searchMsg.innerHTML = "";
         routeToUse = popular_route;
         await loadPopularMovies({ search: false });
+        searchMsg.innerHTML = "";
     }
-};
+}, 300);
 
 const getNextPage = async() => {
     page++;
@@ -324,19 +333,154 @@ const emptySavedMoviesList = () => {
 }
 
 const toggleSavedMovies = () => {
-    clToggle(savedMovieSection, 'open')
+    let val = clToggle(savedMovieSection, 'open');
+    let isOpen;
+    if(val){
+        isOpen = true
+    } else {
+        isOpen = false;
+    }
+    storage.movies.isOpen = isOpen;
+    updateLocalStorage(storage.movies);
     loadSavedMovies();
 }
 
 const toggleFilters = () => {
-    clToggle(filtersSection, 'open')
+    let val = clToggle(filtersSection, 'open');
+    let isOpen;
+    if(val){
+        isOpen = true
+    } else {
+        isOpen = false;
+    }
+    storage.filters.isOpen = isOpen;
+    updateLocalStorage(storage.filters);
+}
+
+const updateAllFilters = () => {
+    filtersCount.textContent = checkFiltersCount();
+}
+
+const compareOrder = (movieA, movieB) => {
+    let returnVal1;
+    let returnVal2;
+    if(filters.items.order.items == 'A-Z'){
+        returnVal1 = -1
+        returnVal2 = 1
+    } else {
+        returnVal1 = 1
+        returnVal2 = -1
+    }
+
+    if (movieA.title.toLowerCase() < movieB.title.toLowerCase()){
+        return returnVal1;
+    }
+    if (movieA.title.toLowerCase() > movieB.title.toLowerCase()){
+        return returnVal2;
+    }
+    loadHTML(true);
+    return 0;
+}
+
+const filterMovieGenres = async(filterItems, resetGenres) => {
+    let filteredMovies = [];
+    let fullInfoMovies = [];
+    let counter = 0;
+    if(filterItems.length && !resetGenres){
+
+        movieResults.forEach(async(movie) => {
+            let movieInfo = await getMovie(movie.id);
+            fullInfoMovies.push(movieInfo);
+            counter++;
+            if(counter == movieResults.length){
+                movieResults = fullInfoMovies;
+            }
+        });
+        
+        setTimeout(() => {
+            movieResults.map(movie => {
+                movie.genres = movie.genres.map((genre) => {
+                    return genre.name.toLowerCase();
+                });
+            });
+        }, 500);
+        
+        setTimeout(() => {
+            
+            filteredMovies = movieResults.filter(movie => {
+                const found = filterItems.some(filter => {
+                    return movie.genres.includes(filter)
+                });
+                return found;
+            });
+        }, 500);
+        
+        setTimeout(() => {
+            movieResults = filteredMovies;
+            loadHTML(true);
+        }, 500)
+    } else {
+        movieResults = moviesToRender;
+        loadHTML(true);
+    }
+}
+
+const filterMovieResults = (resetGenres = false) => {
+    let filters = getLocalStorage(storage.filters, 'items');
+    Object.values(filters).forEach((filter) => {
+        if(filter.name == 'order'){
+            movieResults.sort(compareOrder)
+        }
+
+        if(filter.name == 'genre' || resetGenres){
+            filterMovieGenres(filter.items, resetGenres)
+        }
+    });
 }
 
 const handeFilterInput = (e) => {
     if(checkTag(e, 'input')){
-        let filterType = e.target.parentNode.id
-        checkFilterCount(filterType)
+        let filter = e.target.parentNode.parentNode;
+        let filterCounter = filter.querySelector('section > h3 span');
+        let filterType = e.target.parentNode.id;
+        if(filterType == 'order'){
+  
+            let label = e.target.parentNode.querySelector(`label[for=${e.target.id}]`).textContent;
+            updateFilter(filterType, label);
+            storage.filters.items = filters.items;
+            updateLocalStorage(storage.filters)
+            filterCounter.textContent = checkFilter(filterType).items;
+        } else {
+
+            let checkedNodes = filter.querySelectorAll('section > div input:checked');
+            let checkedItems = Array.from(checkedNodes).map((filter) => {
+                return filter.id.replace(`${filterType}-`, '');
+            });
+            updateFilter(filterType, checkedItems);
+            storage.filters.items = filters.items;
+            updateLocalStorage(storage.filters)
+            filterCounter.textContent = checkFilter(filterType).count;
+        }
+        updateAllFilters();
+        filterMovieResults();
     }
+}
+
+const resetFilterForm = () => {
+    resetFilters(filterForm); 
+    allFilterInputs.forEach(filter => {
+        let input = filter.parentNode;
+        let filterCounter = input.querySelector('section > h3 span');
+        let filterType = filter.id;
+        if(filterType != 'order'){
+            updateFilter(filterType, []);
+            filterCounter.textContent = checkFilter(filterType).count;
+        } else {
+            updateFilter(filterType, "Popularity");
+            filterCounter.textContent = checkFilter(filterType).items;
+        }
+    });
+    filterMovieResults(true);
 }
 
 const checkScroll = () => {
@@ -376,7 +520,20 @@ const initShake = () => {
     window.addEventListener('shake', checkShake, false);
 }
 
+const checkOpenMenus = () => {
+    const savedMoviesOpen = getLocalStorage(storage.movies, 'isOpen');
+    if(savedMoviesOpen){
+        clToggle(savedMovieSection, 'open');
+    }
+    
+    const filtersOpen = getLocalStorage(storage.filters, 'isOpen');
+    if(filtersOpen){
+        clToggle(filtersSection, 'open');
+    }
+}
+
 const onDOMContentLoaded = async() => {
+    checkOpenMenus();
     await loadPopularMovies();
     loadSavedMovies();
     window.addEventListener("scroll", checkScroll);
@@ -395,6 +552,15 @@ moreMovies.addEventListener('click', getNextPage);
 
 // Saved Movies
 emptySavedMovies.addEventListener('click', emptySavedMoviesList);
+
+// Filters
+resetFiltersBtn.addEventListener('click', resetFilterForm);
+allFilterInputs.forEach(filter => {
+    let filterType = filter.id;
+    let checkedItems = filter.querySelectorAll('section > div input:checked');
+    updateFilter(filterType, checkedItems)
+    filter.addEventListener('click', handeFilterInput);
+});
 
 // Floating Buttons
 backToTopBtn.addEventListener('click', goToTop);
