@@ -569,34 +569,64 @@ main > section {
 }
 
 #filters-menu.open {
-	height: 50vh;
+	height: 45vh;
 	padding: var(--header-padding);
 }
 
-#filters-menu section{
+#filters-menu > section {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+}
+
+#filters-menu > section button{
+	padding: 10px 15px;
+    border-radius: 20px;
+    font: inherit;
+    font-weight: bold;
+    color: var(--color-text);
+    background-color: var(--color-main);
+}
+
+#filters-menu form {
+	display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+#filters-menu form section{
 	display: flex;
 	flex-direction: column;
 	gap: 5px;
 }
 
-#filters-menu section div{
+#filters-menu form section div{
 	display: flex;
 	flex-wrap: wrap;
 	gap: 5px;
 }
 
-#filters-menu section div label{
+#filters-menu form section div label{
 	position:relative;
 	display:grid;
 	align-content: center;
-	/* height:2em; */
 	padding: .25em .5em;
+	color: var(--color-main);
 	background-color:white;
-	border: 1px solid black;
+	border: 1px solid var(--color-main);
 	border-radius:20px;
+	cursor: pointer;
+	border: 2px solid transparent;
+	transition: background-color 0.3s, color 0.5s;
 }
 
-#filters-menu section div input{
+#filters-menu form section div label:hover{
+	background-color: var(--color-main);
+	border: 2px solid white;
+	color: white;
+}
+
+#filters-menu form section div input{
 	position: absolute;
 	width: 1px;
 	height: 1px;
@@ -607,11 +637,12 @@ main > section {
 	border: 0;
 }
 
-#filters-menu section div input:focus-visible  + label{
+#filters-menu form section div input:focus-visible  + label{
 	box-shadow:0 0 0 3px blue;
 }
-#filters-menu section div input:checked + label{
-	background-color: grey;
+#filters-menu form section div input:checked + label{
+	color: white;
+	background-color: var(--color-main);
 }
 /* #filters-menu section ul li{
 	background-color:aqua;
@@ -631,11 +662,13 @@ main > section {
 #fixed-buttons button{
 	display: grid;
 	align-content: center;
+	justify-content: center;
 	width: 3.5rem;
 	height: 3.5rem;
 	border-radius: 50%;
 	font-size: 1.5rem;
-	border: 2px solid black;
+	border: 3px solid black;
+	background-color: var(--color-secondary)
 }
 
 #back-to-top {
@@ -645,12 +678,67 @@ main > section {
 	transition: opacity .3s;
 }
 
+#back-to-top span{
+	padding: 3px;
+	border: solid black;
+	border-width: 0 3px 3px 0;
+	transform: rotate(-135deg);
+	-webkit-transform: rotate(-135deg);
+}
+
 #back-to-top.show {
 	opacity: 1;
 	cursor: pointer;
 	pointer-events:all;
 	user-select: none;
 }
+
+#toggle-filters{
+	position: relative;
+	display: flex;
+	flex-direction: column;
+	gap: 5px;
+	padding: 2px 20px 0;
+}
+
+#toggle-filters span{
+	position: relative;
+	border-bottom: 3px solid black;
+	width: 30px;
+}
+
+#toggle-filters span:after{
+	content: "";
+    position: absolute;
+    border-radius: 50%;
+    border: 2px solid #000;
+    width: 5px;
+    height: 5px;
+    background-color: #000;
+    top: -1px;
+	transform: translateX(0) scale(1.1);
+	transition: transform .3s;
+}
+
+#toggle-filters span:first-child:after{
+	left: 5px;
+}
+
+#toggle-filters span:last-child:after{
+	right: 15px;
+}
+
+#toggle-filters:hover span:first-child:after,
+#toggle-filters:hover span:last-child:after
+{
+	transform: translateX(10px);
+}
+
+
+#toggle-filters:hover span:nth-child(2):after{
+	transform: translateX(-10px);
+}
+
 
 #undo-remove{
 	position: fixed;
