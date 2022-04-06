@@ -13,7 +13,7 @@ Nb. Door *open* toe te voegen aan een *details* element kun je deze standaard op
 
 
 
-## Bronnenlijst
+## Bronnenlijst opdracht 1
   - https://www.youtube.com/watch?v=Noooxfq6RE0 (Ironman)
   - https://www.youtube.com/watch?v=MxKR_wnkZpU (Ironman)
   - https://www.youtube.com/watch?v=XzDnsn4NWwE (Captain America)
@@ -24,6 +24,8 @@ Nb. Door *open* toe te voegen aan een *details* element kun je deze standaard op
   - https://www.digitalspy.com/movies/a26593301/avengers-endgame-actors-samuel-l-jackson-hints-nick-fury/
   - https://codepen.io/shooft/pen/rNYJWJw (Captain America, Hawkeye)
 
+## Bronnenlijst opdracht 2
+  - https://stackoverflow.com/questions/17386168/how-to-create-a-heart-shape-using-css (Heartshape)
 
 
 
@@ -91,49 +93,17 @@ Nb. Door *open* toe te voegen aan een *details* element kun je deze standaard op
 
 
   ### Je ontwerp:
-  <img src="readme-images/dummy-plaatje.svg" width="375px" alt="ontwerp opdracht 2">
+  <img src="readme-images/opdracht2/Opdracht 2_ Plan.jpg" width="375px" alt="ontwerp opdracht 2">
 
 
   ### Je ambitie: 
   Aan deze technieken/punten wil ik werken:
-  - punt 1
-  - punt 2
-  - nog een punt
-  - ...
+  - microinteracties na een bepaalde triggers
+  - Heel "DRY" werken
+  - Goede responsive layout/columns
+  - Goed gebruik maken van localStorage
+  - Filteren op de api lijst
 </details>
-
-
-
-## Opdracht 2 test
-
-<details>
-  <summary>uitwerken na testen (week 6/7)</summary>
-
-  Neem minimaal 5 bevindingen op:
-
-
-
-  ### Bevinding 1:
-  Omschrijving van wat er nog niet orde was (tekst en afbeeding(en)).
-
-  #### oplossing:
-  Beschrijving hoe je het hebt hebt opgelost of als het niet gelukt is hoe je het zou oplossen (tekst en afbeeding(en)).
-
-
-
-  ### Bevinding 2:
-  Omschrijving van wat er nog niet orde was (tekst en afbeeding(en)).
-
-  #### oplossing:
-  Beschrijving hoe je het hebt hebt opgelost of als het niet gelukt is hoe je het zou oplossen (tekst en afbeeding(en)).
-
-
-
-  ### Bevinding 3:
-  ...
-</details>
-
-
 
 ## Opdracht 2 reflectie
 
@@ -141,17 +111,28 @@ Nb. Door *open* toe te voegen aan een *details* element kun je deze standaard op
   <summary>uitwerken bij afronden opdracht (voor week 8)</summary>
 
   ### Je uitkomst - karakteristiek screenshot(s):
-  <img src="readme-images/dummy-plaatje.svg" width="375px" alt="uitkomst opdracht 2">
+  <img src="readme-images/opdracht2/movie_bucket_home.jpg" width="150px" alt="Uitkomst: Homepagina">
+  <img src="readme-images/opdracht2/movie_bucket_saved_movies.jpg" width="150px" alt="Uitkomst: Saved Movies">
+  <img src="readme-images/opdracht2/movie_bucket_filters.jpg" width="150px" alt="Uitkomst: Filters">
 
 
   ### Dit ging goed/Heb ik geleerd: 
-  Korte omschrijving met plaatje(s)
+  Wat goed ging is het gebruik van de localStorage om films en zelfs ook filters in op te slaan. De localstorage wordt ook gebruikt om te kijken of je de savedMoves section open had staan of niet, zodat na het refreshen hij ook open is.
 
-  <img src="readme-images/dummy-plaatje.svg" width="375px" alt="top">
+  <img src="readme-images/opdracht2/movie_bucket_saved_movies.jpg" width="150px" alt="Uitkomst: Saved Movies">
+
+
+  Wat ik ook leuk vond zijn de scroll events. De "scroll to top" button is alleen zichtbaar als er naar beneden wordt gescrolld
+
+  <img src="readme-images/opdracht2/movie_bucket_home.jpg" width="300px" alt="Uitkomst: Homepagina">
+  <img src="readme-images/opdracht2/movie_bucket_scroll_to_top.jpg" width="300px" alt="Uitkomst: Saved Movies">
+
+
+  Als laatst vond ik mijn microinteracties wel leuk om te maken en vind ik ook dat zij goed gelukt zijn. Dit is alleen lastig om te zien, omdat dit bewegende beelden zijn.
 
 
   ### Dit was lastig/Is niet gelukt:
-  Korte omschrijving met plaatje(s)
+  Wat ik lastig vond om te doen is het werkend krijgen van sorteren/filteren door het gebruik van de api. Deze api was niet zo goed op het gebied van params doorgeven zoals genres. Dit moest ik dus allemaal handmatig schrijven en werkt eigenlijk alleen op de al geladen films en niet op de films die nog gelazyload moeten worden.
 
-  <img src="readme-images/dummy-plaatje.svg" width="375px" alt="bummer">
+  <img src="readme-images/opdracht2/movie_bucket_filtered.jpg" width="350px" alt="Uitkomst: Saved Movies">
 </details>
