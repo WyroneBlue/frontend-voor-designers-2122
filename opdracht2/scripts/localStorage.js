@@ -1,24 +1,35 @@
 let storage = {
     filters: {
+        isOpen: false,
         name: 'filters',
-        items: []
+        items: {}
     },
     movies: {
+        isOpen: false,
         name: 'saved_movies',
         items: []
     },
 }
 
-const getLocalStorage = (item) => {
-    return JSON.parse(localStorage.getItem(item)) ?? [];
+const getLocalStorage = (item, prop) => {
+    let storageItem = localStorage.getItem(item.name) ?? [];
+    if(storageItem.length){
+        return JSON.parse(storageItem)[prop] ?? [];
+    } else {
+        return [];
+    }
 }
 
-const updateLocalStorage = (item, value) => {
-    localStorage.setItem(item, JSON.stringify(value));
+const updateLocalStorage = (item) => {
+    const values = {
+        isOpen: item.isOpen,
+        items: item.items,
+    }
+    localStorage.setItem(item.name, JSON.stringify(values));
 }
 
 const emptyLocalStorage = (item) => {
-    localStorage.removeItem(item);
+    localStorage.removeItem(item.name);
 }
 
 export {
